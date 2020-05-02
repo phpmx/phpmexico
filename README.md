@@ -2,7 +2,8 @@
 
 ## Install
 
-Usando docker-compose
+Usando docker-compose:
+
 `docker-compose up -d`
 
 `docker-compose exec -u web web bash`
