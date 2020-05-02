@@ -1,0 +1,33 @@
+<div class="col s12">
+    <nav>
+        <div class="nav-wrapper white">
+            <ul id="nav-mobile" class="left">
+                <li>
+                    <a href="{{ path('profile') }}">
+                        <b>Skills</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('profile_preference') }}">
+                        <b>Preferencias</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('profile_user', {'username': app.user.username }) }}">
+                        <b>Mi perfil</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('jobs_own') }}">
+                        <b>Tus vacantes</b>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('job_offerts') }}">
+                        <b>Tus ofertas de trabajo</b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

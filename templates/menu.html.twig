@@ -1,0 +1,27 @@
+<nav>
+    <div class="nav-wrapper white">
+        {% if app.request.attributes.get('_route') != 'index'%}
+            <a href="/" class="brand-logo blue-text">
+                PHP México
+            </a>
+        {% endif %}
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger blue-text">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="{{ path('jobs_plans') }}">Empresas</a></li>
+            <li><a href="{{ path('jobs') }}">Trabajo</a></li>
+            <li><a href="{{ path('meetup') }}">Eventos</a></li>
+            <li><a href="https://phpmx.slack.com" target="_blank" rel="noopener">Chat</a></li>
+            <li><a href="{{ path('profile') }}">Tu Perfil</a></li>
+        </ul>
+    </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+    <li><a href="{{ path('jobs_plans') }}">Empresas</a></li>
+    <li><a href="{{ path('jobs') }}">Trabajo</a></li>
+    <li><a href="{{ path('meetup') }}">Eventos</a></li>
+    <li><a href="https://phpmx.slack.com" target="_blank" rel="noopener">Chat</a></li>
+    <li><a href="{{ path('profile') }}">Tu Perfil</a></li>
+</ul>

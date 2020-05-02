@@ -1,0 +1,76 @@
+.empresas {
+  h3 {
+    margin-top: 10%;
+    i {
+      font-size: 2.5rem;
+    }
+  }
+
+  .planes {
+    @include mq-min(tablet){
+      display: flex;
+      justify-content: space-between;
+      margin: 4% 0 5%;
+    }
+    
+  
+    .plan {
+      @include mq-min(tablet){
+        width: 30%;
+        margin-right: 3%;
+      }
+      padding: 2% 4% 4%;
+      border-radius: 3%;
+      margin-bottom: 2%;
+      ul {
+        li {
+          display: flex;
+          i {
+            margin-right: 2%;
+          }
+        }
+      }
+      .btn {
+        display: flex;
+        justify-content: center;
+        background-color: $primary-color;
+      }
+    }
+
+    .plan-a {
+      border: 1px solid $primary-color;
+      h4,
+      h5,
+      i {
+        color: $primary-color;
+      }
+    }
+  
+    .plan-b {
+      border: 1px solid #FF9800;
+      h4,
+      h5,
+      i {
+        color: #FF9800;
+      }
+      .btn {
+        background-color: #FF9800;
+      }
+    }
+  
+    .plan-c {
+      border: 1px solid #46aa71;
+      h4,
+      h5,
+      i {
+        color: #46aa71;
+      }
+      .btn {
+        background-color: #46aa71;
+      }
+    }
+  }
+
+
+}
+

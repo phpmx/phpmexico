@@ -1,0 +1,29 @@
+
+version: '3'
+
+services:
+  web:
+    image: indava/php:7.3
+    ports:
+      - "8080:80"
+    environment:
+      - XDEBUG_CONFIG="remote_host=172.17.0.1"
+      - APACHE_RUN_USER=web
+      - APP_ENV=dev
+      - APP_DEBUG=1
+      - WEB_ROOT=public
+    links:
+      - db
+      - redis
+    volumes:
+      - ./:/var/www/html
+      - ./resources/php/devops.dev.conf:/etc/apache2/sites-available/000-default.conf
+  redis:
+    image: redis:5.0-alpine
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=toor
+      - MYSQL_DATABASE=phpmx
+      - MYSQL_USER=phpmx
+      - MYSQL_PASSWORD=phpmxtoor

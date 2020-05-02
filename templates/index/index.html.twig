@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La comunidad de programadores{% endblock %}
+
+{% form_theme form _self %}
+
+{%- block checkbox_widget -%}
+{% spaceless %}
+  <label>
+    <input type="checkbox" {{ block('widget_attributes') }} {% if value is defined %} value="{{ value }}" {% endif %} {% if checked %} checked="checked" {% endif %}/>
+    <span>{{ form_label(form) }}</span>
+  </label>
+{% endspaceless %}{%- endblock checkbox_widget -%}{% block body %}
+
+<div class="formulario-registro">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 logo-php-form">
+        <img src="/images/logo-php.png" width="100%" title="PHP México Logo" alt="PHP México Logo"/>
+      </div>
+      <div class="col s12 m6">
+        {% include 'index/join.html.twig' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="redes-sociales center-align">
+  <div class="container">
+    <div class="row">
+      <h1 class="white-text">
+        La comunidad de PHP en México
+      </h1>
+    </div>
+    <div class="row logos-redes">
+      <div class="col s3 m3">
+        <a href="https://twitter.com/phpmx" target="_blank">
+          <img src="/images/twitter.png" class="img1ss" width="120px" alt="PHP Mexico en Twitter"/>
+        </a>
+      </div>
+      <div class="col s3 m3">
+        <a href="https://www.facebook.com/pehacheperos" target="_blank">
+          <img src="/images/facebook.png" class="img2ss" width="80px" alt="PHP Mexico en Facebook"/>
+        </a>
+      </div>
+      <div class="col s3 m3">
+        <a href="https://www.meetup.com/es-ES/PHP-The-Right-Way/" target="_blank">
+          <img src="/images/meetup.svg" class="img3ss" width="100px" alt="PHP Mexico en Meetup"/>
+        </a>
+      </div>
+      <div class="col s3 m3">
+        <a href="https://www.instagram.com/phpmx/" target="_blank">
+          <img src="/images/instagram.png" class="img4ss" width="80px" alt="PHP Mexico en Instagram"/>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="tecnologias">
+    <div class="container">
+      <div class="row">
+        <h3 class="center-align">
+          Tecnologías
+        </h3>
+      </div>
+      <div class="row">
+        {% for skill in skills %}
+          <div class="col s12 m3">
+            <div class="card card-hover z-depth-0">
+              <a href="{{ path('skill_slug', {slug: skill.slug }) }}">
+                <div class="card-image">
+                  <img src="{{ skill.imageUrl }}" alt="{{ skill }}" class="responsive-img" width="100%">
+                </div>
+                <div class="card-content">
+                  <span class="card-title">{{ skill }}</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      </div>
+    </div>
+  </div>
+</main>{% endblock %}{% block javascripts %}{% endblock %}

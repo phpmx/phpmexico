@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="theme-color" content="#000000">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta http-equiv="content-language" content="es"/>
+
+    <title>{% block title %}Welcome!{% endblock %} | PHP México</title>
+
+    <meta name="description" content="La comunidad de programadores PHP en México, llevamos a nuestra comunidad al siguiente nivel">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@phpmx" />
+
+    {% block meta %}
+    <meta property="og:url" content="https://phpmexico.mx" />
+    <meta property="og:title" content="Hacemos la web | PHP México" />
+    <meta property="og:description" content="La comunidad de programadores PHP en México, llevamos a nuestra comunidad al siguiente nivel" />
+    <meta property="og:image" content="https://phpmexico.mx/images/logo-php.png" />
+    {% endblock %}
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    {{ encore_entry_link_tags('app') }}
+
+    {% block stylesheets %}{% endblock %}
+  </head>
+  <body>
+
+    {% include 'menu.html.twig' %}
+    {% block body %}{% endblock %}
+
+    {% include 'footer.html.twig' %}
+
+    <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="//www.google.com/recaptcha/api.js?render={{ google_recaptcha_site_key }}"></script>
+    <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+      });
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82943122-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-82943122-1');
+    </script>
+    {% block javascripts %}{% endblock %}
+
+  </body>
+</html>

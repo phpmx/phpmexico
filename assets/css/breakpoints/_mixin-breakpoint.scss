@@ -1,0 +1,20 @@
+// Responsive breakpoint Mixins
+
+// Media min-width value
+@mixin mq-min($breakpoint) {
+  $breakpoint-value: map-get(map-get($breakpoint-map, $breakpoint), min-width);
+  @media screen and (min-width: #{$breakpoint-value}) { @content; }
+}
+
+// Media max-width value
+@mixin mq-max($breakpoint) {
+  $breakpoint-value: map-get(map-get($breakpoint-map, $breakpoint), max-width);
+  @media screen and (max-width: #{$breakpoint-value}) { @content; }
+}
+
+// Media min-max-width value
+@mixin mq-min-max($min-breakpoint, $max-breakpoint) {
+  $min-breakpoint-value: map-get(map-get($breakpoint-map, $min-breakpoint), min-width);
+  $max-breakpoint-value: map-get(map-get($breakpoint-map, $max-breakpoint), max-width);
+  @media screen and (min-width: #{$min-breakpoint-value}) and (max-width: #{$max-breakpoint-value}) { @content; }
+}

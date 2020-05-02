@@ -1,0 +1,36 @@
+easy_admin:
+    entities:
+        job:
+            class: App\Entity\Job
+            label: 'Jobs'
+        contact:
+            class: App\Entity\Contact
+            label: 'Contact Request'
+        skill_group:
+            class: App\Entity\SkillGroup
+            label: 'Skill Groups'
+        skill_percent:
+            class: App\Entity\SkillPercent
+            label: 'Skill Percent'
+        skill:
+            class: App\Entity\Skill
+            label: 'Skills'
+            form:
+                fields:
+                    - name
+                    - slug
+                    - image_url
+                    - skill_group
+                    - { property: 'description', type: 'fos_ckeditor' }
+        profile:
+            class: App\Entity\Profile
+            label: 'Profiles'
+        user:
+            class: App\Entity\User
+            label: 'Users'
+            list:
+                fields:
+                    - id
+                    - username
+                    - email
+                    - profile

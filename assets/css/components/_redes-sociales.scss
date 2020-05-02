@@ -1,0 +1,37 @@
+.redes-sociales {
+  background-color: $primary-color !important;
+  padding: 1% 0 3%;
+  margin-top: -2%;
+
+  @include mq-max(mobile-big) {
+    margin-top: -6%;
+  }
+  @include mq-min-max(tablet,tablet){
+    margin-top: -3% !important;
+  }
+  
+  h3 {
+    padding: 3%;
+    color: #fff;
+  }
+
+  .logos-redes {
+    display: flex;
+    align-items: center;
+
+    @include mq-max(mobile-big){
+      .img1ss{
+        width: 75px !important;
+      } 
+      .img2ss{
+        width: 53px !important;
+      } 
+      .img3ss{
+        width: 67px !important;
+      } 
+      .img4ss{
+        width: 50px !important;
+      } 
+    }
+  }
+}

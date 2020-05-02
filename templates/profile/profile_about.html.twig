@@ -1,0 +1,25 @@
+<div class="collapsible-header">
+<h5>
+  <i class="material-icons">navigate_next</i>About
+</h5>
+</div>
+<div class="collapsible-body">
+  <div class="input-field">
+      {{ form_widget(form.name) }}
+      {{ form_label(form.name) }}
+  </div>
+  <div class="input-field">
+      {{ form_widget(form.lastname) }}
+      {{ form_label(form.lastname) }}
+  </div>
+  <div class="input-field">
+      {{ form_widget(form.title) }}
+      {{ form_label(form.title) }}
+  </div>
+  <p>
+      {{ form_row(form.developer) }}
+  </p>
+  <p>
+      {{ form_row(form.hr) }}
+  </p>
+</div>

@@ -1,0 +1,7 @@
+{%- block checkbox_row -%}
+    <label>
+        {{- form_widget(form) -}}
+        <span>{{- form_label(form) | striptags -}}</span>
+        {{- form_errors(form) -}}
+    </label>
+{%- endblock checkbox_row -%}

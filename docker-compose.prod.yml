@@ -1,0 +1,42 @@
+version: '3'
+
+networks:
+  proxy:
+    external:
+      name: proxy
+  internal:
+    driver: bridge
+    external: false
+
+services:
+  web:
+    ports: []
+    environment:
+      - APACHE_RUN_USER=web
+      - APP_ENV=prod
+      - APP_DEBUG=0
+      - WEB_ROOT=public
+    labels:
+      - traefik.backend=phpmx_site
+      - traefik.docker.network=proxy
+      - "traefik.frontend.rule=Host:phpmexico.mx,www.phpmexico.mx"
+      - traefik.enable=true
+      - traefik.port=80
+      - "traefik.frontend.entryPoints=http,https"
+    networks:
+      - internal
+      - proxy
+
+  redis:
+    networks:
+      - internal
+    labels:
+      - traefik.enable=false
+
+  db:
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - internal
+    labels:
+      - traefik.enable=false

@@ -1,0 +1,10 @@
+@include mq-max(tablet) {
+  .hidden-mobile {
+    display: none;
+  }
+}
+@include mq-min(laptop) {
+  .hidden-desktop {
+    display: none;
+  }
+}

@@ -1,0 +1,13 @@
+nav {
+  ul {
+    margin-right: 10%;
+    a {
+      color: $primary-color;
+      padding: 0 23px;
+      &:hover {
+        border-bottom: 3px solid #0090c7;
+        background-color: transparent;
+      }
+    }
+  }
+}

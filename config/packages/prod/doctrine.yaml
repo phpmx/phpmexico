@@ -1,0 +1,44 @@
+doctrine:
+    orm:
+        auto_generate_proxy_classes: false
+        second_level_cache:
+            enabled: true
+            region_lifetime: 86400
+            region_cache_driver:
+                type: service
+                id: snc_second_level_cache
+            regions:
+                phpmx_statics:
+                    lifetime: 300
+                    cache_driver:
+                        type: service
+                        id: snc_second_level_cache
+        metadata_cache_driver:
+            type: service
+            id: doctrine.system_cache_provider
+        query_cache_driver:
+            type: service
+            id: doctrine.system_cache_provider
+        result_cache_driver:
+            type: service
+            id: doctrine.result_cache_provider
+
+services:
+    doctrine.result_cache_provider:
+        class: Symfony\Component\Cache\DoctrineProvider
+        public: false
+        arguments:
+            - '@doctrine.result_cache_pool'
+    doctrine.system_cache_provider:
+        class: Symfony\Component\Cache\DoctrineProvider
+        public: false
+        arguments:
+            - '@doctrine.system_cache_pool'
+
+framework:
+    cache:
+        pools:
+            doctrine.result_cache_pool:
+                adapter: cache.app
+            doctrine.system_cache_pool:
+                adapter: cache.system

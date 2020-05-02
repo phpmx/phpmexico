@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ job.title }}{% endblock %}
+
+{% block meta %}
+    <meta property="og:url" content="https://phpmexico.mx/jobs" />
+    <meta property="og:title" content="{{ job.title }} | PHP México" />
+    <meta property="og:description" content="{{ job.description }}" />
+    <meta property="og:image" content="https://phpmexico.mx/images/logo-php.png" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                    <h3>{{ job.title }}</h3>
+                    <h4>{{ job.company }}</h4>
+                    <p>{{ job.createdAt | date }}</p>
+                </div>
+                <div class="col s12">
+                    <p>{{ job.description | raw }}</p>
+                    <hr>
+                    <p>{{ job.requirements | raw }}</p>
+                    <p>{{ job.applicationUrl }}</p>
+                    <p>{{ job.salary }}</p>
+                </div>
+                <div class="col s12">
+                    Contacto:
+                    <p>{{ job.contact }}</p>
+                    <p>{{ job.email }}</p>
+                    <p>{{ job.phone }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

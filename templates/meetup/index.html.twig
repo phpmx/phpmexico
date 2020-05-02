@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reuniones{% endblock %}
+
+{% block meta %}
+   <meta property="og:url" content="https://phpmexico.mx/meetup" />
+   <meta property="og:title" content="Reuniones | PHP México" />
+   <meta property="og:description" content="Ven a compartir el conocimiento" />
+   <meta property="og:image" content="https://phpmexico.mx/images/logo-php.png" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12">
+                    <h3>Eventos</h3>
+                </div>
+
+                {% for event in events %}
+                    {% set start_event = event.time/1000 %}
+                    {% set end_event = (event.time + event.duration)/1000 %}
+
+                    <div class="col s12">
+                        <div class="card">
+                            {% if event.photo_url is defined %}
+                                <div class="card-image">
+                                    <a href="{{ event.event_url }}">
+                                    <img src="{{ event.photo_url | replace({'global': 'highres'})}}">
+                                    </a>
+                                </div>
+                            {% endif %}
+                            <div class="card-content">
+                                <a href="{{ event.event_url }}" target="_blank">
+                                    <span class="card-title">{{ event.name }}</span>
+                                </a>
+                                <ul>
+                                    <li>{{ event.yes_rsvp_count }} registrados</li>
+                                    <li>{{ event.venue.name }}</li>
+                                    <li>{{ start_event | date }} - {{ end_event | date('H:s') }}</li>
+                                </ul>
+                            </div>
+                            <div class="card-action">
+                                <a href="{{ event.event_url }}" target="_blank">Registarse</a>
+                            </div>
+                        </div>
+                        <script type='application/ld+json'>
+                            {
+                                "@context": "https://www.schema.org",
+                                "@type": "Event",
+                                "name": "{{ event.name }}",
+                                "url": "{{ event.event_url }}",
+                                "description": "{{ event.description | striptags}}",
+                                "startDate": "{{ start_event | date('d/m/Y H:i') }}",
+                                "endDate": "{{ end_event | date('d/m/Y H:i') }}",
+                                "location": {
+                                    "@type": "Place",
+                                    "name": "{{ event.venue.name }}",
+                                }
+                            }
+                        </script>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
