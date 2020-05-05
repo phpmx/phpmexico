@@ -8,6 +8,8 @@ Usando docker-compose:
 
 `docker-compose exec -u web web bash`
 
+`composer install`
+
 `./bin/console doctrine:migra:migra`
 
 Visita http://localhost:8080
