@@ -5,8 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
-    SLACK_URL_INVITE: 'https://slack.com/api/users.admin.invite'
+    SLACK_URL_INVITE: 'https://slack.com/api/admin.users.invite'
     SLACK_TOKEN: '%env(SLACK_TOKEN)%'
+    SLACK_TEAMID: '%env(SLACK_TEAMID)%'
     google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
 
 services:
