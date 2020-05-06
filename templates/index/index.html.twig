@@ -5,13 +5,15 @@
 {% form_theme form _self %}
 
 {%- block checkbox_widget -%}
-{% spaceless %}
+  {% apply spaceless %}
   <label>
     <input type="checkbox" {{ block('widget_attributes') }} {% if value is defined %} value="{{ value }}" {% endif %} {% if checked %} checked="checked" {% endif %}/>
     <span>{{ form_label(form) }}</span>
   </label>
-{% endspaceless %}{%- endblock checkbox_widget -%}{% block body %}
+  {% endapply %}
+{%- endblock checkbox_widget -%}
 
+{% block body %}
 <div class="formulario-registro">
   <div class="container">
     <div class="row">
@@ -85,4 +87,7 @@
       </div>
     </div>
   </div>
-</main>{% endblock %}{% block javascripts %}{% endblock %}
+</main>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}

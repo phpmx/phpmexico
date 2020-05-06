@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {% spaceless %}
+    {% apply spaceless %}
         {% if user.profile %}
             {{ user.profile.name }} {{ user.profile.lastname }}
         {% else %}
             {{ user }}
         {% endif %}
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}
 
 {% block meta %}
