@@ -1,4 +1,6 @@
 {
+  "name": "phpmx/phpmexico",
+  "description": "Sitio web de PHP México",
     "type": "project",
     "license": "proprietary",
     "require": {
