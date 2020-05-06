@@ -13,6 +13,9 @@ use ReCaptcha\ReCaptcha;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use GuzzleHttp\RequestOptions;
+use GuzzleHttp\Exception\ClientException;
+use Psr\Log\LoggerInterface;
 
 class IndexController extends AbstractController
 {
@@ -102,17 +105,25 @@ class IndexController extends AbstractController
         ]);
     }
 
-    private function inviteUser($email)
+    private function inviteUser(string $email, LoggerInterface $logger)
     {
         $url = $this->getParameter('SLACK_URL_INVITE');
         $token = $this->getParameter('SLACK_TOKEN');
+        $teamId = $this->getParameter('SLACK_TEAMID');
 
-        $this->client->get($url, [
-            'query' => [
-                'token' => $token,
-                'email' => $email,
-                'channels' => 'C0PDPQJ3B,C21DD0RMW,C0PPV4HS7,C0PPU2NTD',
-            ]
-        ]);
+        try {
+            $this->client->post($url, [
+                RequestOptions::JSON => [
+                    'token' => $token,
+                    'email' => $email,
+                    'channel_ids' => 'C0PDPQJ3B,C21DD0RMW,C0PPV4HS7,C0PPU2NTD',
+                    'team_id' => $teamId,
+                ],
+            ]);
+        } catch(ClientException $e) {
+            $logger->critical($e->getMessage(), [
+                'cause' => 'Slack Inviter',
+            ]);
+        }
     }
 }
