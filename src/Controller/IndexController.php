@@ -23,10 +23,13 @@ class IndexController extends AbstractController
 
     protected $userRepo;
 
-    public function __construct(Client $client, UserRepository $userRepo)
+    protected $logger;
+
+    public function __construct(Client $client, UserRepository $userRepo, LoggerInterface $logger)
     {
         $this->client = $client;
         $this->userRepo = $userRepo;
+        $this->logger = $logger;
     }
 
     /**
@@ -105,7 +108,7 @@ class IndexController extends AbstractController
         ]);
     }
 
-    private function inviteUser(string $email, LoggerInterface $logger)
+    private function inviteUser(string $email)
     {
         $url = $this->getParameter('SLACK_URL_INVITE');
         $token = $this->getParameter('SLACK_TOKEN');
@@ -121,7 +124,7 @@ class IndexController extends AbstractController
                 ],
             ]);
         } catch(ClientException $e) {
-            $logger->critical($e->getMessage(), [
+            $this->logger->critical($e->getMessage(), [
                 'cause' => 'Slack Inviter',
             ]);
         }
