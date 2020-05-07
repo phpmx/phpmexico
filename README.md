@@ -1,6 +1,6 @@
 # PHP México
 
-## Install
+## Install using Docker
 
 Usando docker-compose:
 
