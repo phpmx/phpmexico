@@ -2,7 +2,7 @@ name: PHP Composer
 
 on:
   push:
-    branches: [ master, feature/git-actions-flow-testing ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -28,7 +28,7 @@ jobs:
       run: ./vendor/bin/php-cs-fixer fix --dry-run --rules=@Symfony,-@PSR1,-@PSR2 src/
 
     - name: run test
-      run: ./vendor/bin/phpunit
+      run: ./bin/phpunit
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
