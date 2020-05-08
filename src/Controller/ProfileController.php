@@ -37,8 +37,7 @@ class ProfileController extends AbstractController
 
         if ($user->getProfile()) {
             $profile = $user->getProfile();
-        }
-        else {
+        } else {
             $profile = new Profile();
         }
 

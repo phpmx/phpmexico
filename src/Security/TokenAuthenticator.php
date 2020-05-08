@@ -16,7 +16,6 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
 class TokenAuthenticator extends AbstractGuardAuthenticator
 {
-
     private $em;
 
     public function __construct(EntityManagerInterface $em)

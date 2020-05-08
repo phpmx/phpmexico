@@ -98,5 +98,4 @@ class JobController extends AbstractController
             'job' => $job,
         ]);
     }
-
 }

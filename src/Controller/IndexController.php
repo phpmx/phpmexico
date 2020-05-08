@@ -42,10 +42,8 @@ class IndexController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $checker = new EmailChecker();
             if ($checker->isValid($form->get('email')->getData())) {
-
                 $this->inviteUser($user->getEmail());
 
                 $em = $this->getDoctrine()->getManager();
@@ -53,8 +51,7 @@ class IndexController extends AbstractController
                 $em->flush();
 
                 $this->addFlash('notice', 'Hemos enviado correos a tu email');
-            }
-            else {
+            } else {
                 $this->addFlash('notice', 'Correo invalido');
             }
         }
@@ -76,7 +73,6 @@ class IndexController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $g_recaptcha = $request->request->get('recaptchaResponse');
             $ip = $request->getClientIp();
             $re_response = $reCaptcha->verify($g_recaptcha, $ip);
@@ -96,8 +92,7 @@ class IndexController extends AbstractController
                     $em->flush();
 
                     $this->addFlash('notice', 'Te enviamos un correo con el link para ingresar a tu cuenta');
-                }
-                else {
+                } else {
                     $this->addFlash('notice', 'Correo no encontrado');
                 }
             }
@@ -123,7 +118,7 @@ class IndexController extends AbstractController
                     'team_id' => $teamId,
                 ],
             ]);
-        } catch(ClientException $e) {
+        } catch (ClientException $e) {
             $this->logger->critical($e->getMessage(), [
                 'cause' => 'Slack Inviter',
             ]);

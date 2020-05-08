@@ -25,7 +25,7 @@ class ContactType extends AbstractType
                 'class' => Job::class,
                 'choice_label' => 'title',
                 'placeholder' => 'Selecciona una oferta de trabajo',
-                'query_builder' => function(EntityRepository $er) use ($user) {
+                'query_builder' => function (EntityRepository $er) use ($user) {
                     return $er->createQueryBuilder('j')
                         ->where('j.owner = :owner')
                         ->andWhere('j.active = true')

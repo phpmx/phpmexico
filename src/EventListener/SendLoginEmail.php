@@ -74,7 +74,7 @@ class SendLoginEmail implements EventSubscriber
         return $user;
     }
 
-    private function message(User $user,string $template)
+    private function message(User $user, string $template)
     {
         $login_url = 'https://phpmexico.mx/?token=' . $user->getLoginToken();
 

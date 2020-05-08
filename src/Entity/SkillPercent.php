@@ -60,5 +60,4 @@ class SkillPercent
     {
         return (string) $this->percent;
     }
-
 }

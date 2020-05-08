@@ -25,8 +25,7 @@ class MeetupController extends AbstractController
             $date = new \DateTime('+1 week');
             $events_cache->expiresAt($date);
             $cache->save($events_cache);
-        }
-        else {
+        } else {
             $events = $cache->getItem('meetup_events')->get();
         }
 
@@ -34,5 +33,4 @@ class MeetupController extends AbstractController
             'events' => $events->getData(),
         ]);
     }
-
 }

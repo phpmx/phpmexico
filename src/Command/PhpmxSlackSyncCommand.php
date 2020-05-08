@@ -52,7 +52,7 @@ class PhpmxSlackSyncCommand extends Command
 
                 if ($user && $user->getSlackId() == null) {
                     $user->setSlackId($slack_id);
-                } else if (!$user) {
+                } elseif (!$user) {
                     $user = new User();
                     $user->setEmail($email);
                     $user->setUsername($username);
