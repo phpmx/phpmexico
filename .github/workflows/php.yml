@@ -24,6 +24,12 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: php code style
+      run: ./vendor/bin/php-cs-fixer fix --dry-run --show-progress=dots --verbose src/
+
+    - name: run test
+      run: ./vendor/bin/phpunit
+
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 

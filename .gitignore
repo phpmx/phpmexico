@@ -17,3 +17,9 @@ npm-debug.log
 yarn-error.log
 .DS_Store
 ###< symfony/webpack-encore-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
