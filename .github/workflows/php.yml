@@ -25,7 +25,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: php code style
-      run: ./vendor/bin/php-cs-fixer fix --dry-run --show-progress=dots --verbose src/
+      run: ./vendor/bin/php-cs-fixer fix --dry-run --rules=@Symfony,-@PSR1,-@PSR2 src/
 
     - name: run test
       run: ./vendor/bin/phpunit

@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use DMS\Service\Meetup\MeetupKeyAuthClient;
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Psr\Cache\CacheItemPoolInterface;
 
 class MeetupController extends AbstractController
 {

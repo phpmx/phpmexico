@@ -91,7 +91,7 @@ class ProfileController extends AbstractController
         $user = $this->getUser();
         $contact = new Contact();
 
-        $form = $this->createForm(ContactType::class, $contact, [ 'user' => $user ]);
+        $form = $this->createForm(ContactType::class, $contact, ['user' => $user]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid() && $user) {
@@ -106,7 +106,7 @@ class ProfileController extends AbstractController
         $groups = [];
         if ($developer->getProfile()) {
             foreach ($developer->getProfile()->getSkills() as $skill) {
-                $groups[(string)$skill->getSkillGroup()][] = $skill;
+                $groups[(string) $skill->getSkillGroup()][] = $skill;
             }
         }
 

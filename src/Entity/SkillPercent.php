@@ -26,7 +26,6 @@ class SkillPercent
      */
     private $percent = 0;
 
-
     public function getId(): ?int
     {
         return $this->id;

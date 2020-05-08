@@ -86,7 +86,7 @@ class Profile
         $this->user = $user;
 
         // set (or unset) the owning side of the relation if necessary
-        $newProfile = $user === null ? null : $this;
+        $newProfile = null === $user ? null : $this;
         if ($newProfile !== $user->getProfile()) {
             $user->setProfile($newProfile);
         }

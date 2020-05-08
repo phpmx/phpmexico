@@ -7,15 +7,15 @@ use App\Form\LoginType;
 use App\Form\SignUpType;
 use App\Repository\SkillRepository;
 use App\Repository\UserRepository;
-use GuzzleHttp\Client;
 use EmailChecker\EmailChecker;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\RequestOptions;
+use Psr\Log\LoggerInterface;
 use ReCaptcha\ReCaptcha;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use GuzzleHttp\RequestOptions;
-use GuzzleHttp\Exception\ClientException;
-use Psr\Log\LoggerInterface;
 
 class IndexController extends AbstractController
 {
@@ -81,8 +81,8 @@ class IndexController extends AbstractController
                 $email = $form->get('email')->getData();
                 $user = $this->userRepo->findByEmail($email);
 
-                $this->get("security.csrf.token_manager")
-                    ->refreshToken("form_intention");
+                $this->get('security.csrf.token_manager')
+                    ->refreshToken('form_intention');
 
                 if ($user) {
                     $user->setLastLogin(new \DateTime());

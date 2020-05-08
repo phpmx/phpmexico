@@ -4,10 +4,10 @@ namespace App\EventListener;
 
 use App\Entity\Contact;
 use App\Entity\Job;
-use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-use Twig\Environment;
 use Doctrine\Common\EventSubscriber;
+use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
+use Twig\Environment;
 
 class SendContactEmail implements EventSubscriber
 {

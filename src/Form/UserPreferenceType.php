@@ -24,7 +24,7 @@ class UserPreferenceType extends AbstractType
                 'required' => true,
                 'attr' => [
                     'readonly' => true,
-                ]
+                ],
             ])
             ->add('mobile', TextType::class, [
                 'label' => 'Mobile',
@@ -58,7 +58,7 @@ class UserPreferenceType extends AbstractType
                     '65,000 a 70,000' => '65_70',
                     '70,000 a 75,000' => '70_75',
                     '75,000 a 80,000' => '75_80',
-                    'Más de 80,000'   => '80_',
+                    'Más de 80,000' => '80_',
                 ],
             ])
             ->add('offerts', CheckboxType::class, [
