@@ -3,18 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Job;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
-
 
 class JobType extends AbstractType
 {
@@ -31,7 +28,7 @@ class JobType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Nombre de la vacante',
-                'help' => 'Por ejemplo: Frontend React Developer'
+                'help' => 'Por ejemplo: Frontend React Developer',
             ])
             ->add('contact', TextType::class, [
                 'label' => 'Nombre',
@@ -54,7 +51,7 @@ class JobType extends AbstractType
             ])
             ->add('application_url', UrlType::class, [
                 'label' => 'Link de la vante',
-                'help' => 'Link a una publicación previa o a la página de la empresa'
+                'help' => 'Link a una publicación previa o a la página de la empresa',
             ])
             ->add('salary', ChoiceType::class, [
                 'label' => 'Oferta Salarial',
@@ -74,7 +71,7 @@ class JobType extends AbstractType
                     '65,000 a 70,000' => '65_70',
                     '70,000 a 75,000' => '70_75',
                     '75,000 a 80,000' => '75_80',
-                    'Más de 80,000'   => '80_',
+                    'Más de 80,000' => '80_',
                 ],
             ])
             ->add('company')

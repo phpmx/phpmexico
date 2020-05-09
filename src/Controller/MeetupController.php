@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use DMS\Service\Meetup\MeetupKeyAuthClient;
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Psr\Cache\CacheItemPoolInterface;
 
 class MeetupController extends AbstractController
 {
@@ -25,8 +25,7 @@ class MeetupController extends AbstractController
             $date = new \DateTime('+1 week');
             $events_cache->expiresAt($date);
             $cache->save($events_cache);
-        }
-        else {
+        } else {
             $events = $cache->getItem('meetup_events')->get();
         }
 
@@ -34,5 +33,4 @@ class MeetupController extends AbstractController
             'events' => $events->getData(),
         ]);
     }
-
 }

@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\SkillGroup;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * @method SkillGroup|null find($id, $lockMode = null, $lockVersion = null)

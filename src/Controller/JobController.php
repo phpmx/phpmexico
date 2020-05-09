@@ -21,6 +21,7 @@ class JobController extends AbstractController
         $jobs = $jobRepository->findBy([
             'active' => true,
         ]);
+
         return $this->render('jobs/index.html.twig', [
             'jobs' => $jobs,
         ]);
@@ -71,7 +72,6 @@ class JobController extends AbstractController
     public function plans()
     {
         return $this->render('jobs/plans.html.twig', [
-
         ]);
     }
 
@@ -98,5 +98,4 @@ class JobController extends AbstractController
             'job' => $job,
         ]);
     }
-
 }

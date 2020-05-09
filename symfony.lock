@@ -2,6 +2,12 @@
     "clue/stream-filter": {
         "version": "v1.4.1"
     },
+    "composer/semver": {
+        "version": "1.5.1"
+    },
+    "composer/xdebug-handler": {
+        "version": "1.4.1"
+    },
     "dms/meetup-api-client": {
         "version": "v2.3.1"
     },
@@ -96,6 +102,18 @@
     },
     "egulias/email-validator": {
         "version": "2.1.9"
+    },
+    "friendsofphp/php-cs-fixer": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cc05ab6abf6894bddb9bbd6a252459010ebe040b"
+        },
+        "files": [
+            ".php_cs.dist"
+        ]
     },
     "friendsofsymfony/ckeditor-bundle": {
         "version": "2.0",
@@ -195,6 +213,9 @@
     },
     "php": {
         "version": "7.3"
+    },
+    "php-cs-fixer/diff": {
+        "version": "v1.3.0"
     },
     "php-http/client-common": {
         "version": "1.9.1"
@@ -304,6 +325,9 @@
     "symfony/asset": {
         "version": "v4.2.4"
     },
+    "symfony/browser-kit": {
+        "version": "v4.4.8"
+    },
     "symfony/cache": {
         "version": "v4.2.4"
     },
@@ -325,6 +349,9 @@
     },
     "symfony/contracts": {
         "version": "v1.0.2"
+    },
+    "symfony/css-selector": {
+        "version": "v4.4.8"
     },
     "symfony/debug": {
         "version": "v4.2.4"
@@ -349,6 +376,9 @@
     },
     "symfony/doctrine-bridge": {
         "version": "v4.2.4"
+    },
+    "symfony/dom-crawler": {
+        "version": "v4.4.8"
     },
     "symfony/dotenv": {
         "version": "v4.2.4"
@@ -463,6 +493,21 @@
     },
     "symfony/options-resolver": {
         "version": "v4.2.4"
+    },
+    "symfony/phpunit-bridge": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "6d0e35f749d5f4bfe1f011762875275cd3f9874f"
+        },
+        "files": [
+            ".env.test",
+            "bin/phpunit",
+            "phpunit.xml.dist",
+            "tests/bootstrap.php"
+        ]
     },
     "symfony/polyfill-intl-icu": {
         "version": "v1.11.0"

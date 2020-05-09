@@ -3,10 +3,10 @@
 namespace App\EventListener;
 
 use App\Entity\User;
-use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-use Twig\Environment;
 use Doctrine\Common\EventSubscriber;
+use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
+use Twig\Environment;
 
 class SendLoginEmail implements EventSubscriber
 {
@@ -65,7 +65,7 @@ class SendLoginEmail implements EventSubscriber
 
         $em = $args->getObjectManager();
 
-        $hash = hash('gost', $user->getEmail() . date('Y-m-d H:i:s'));
+        $hash = hash('gost', $user->getEmail().date('Y-m-d H:i:s'));
         $user->setLoginToken($hash);
 
         $em->persist($user);
@@ -74,15 +74,15 @@ class SendLoginEmail implements EventSubscriber
         return $user;
     }
 
-    private function message(User $user,string $template)
+    private function message(User $user, string $template)
     {
-        $login_url = 'https://phpmexico.mx/?token=' . $user->getLoginToken();
+        $login_url = 'https://phpmexico.mx/?token='.$user->getLoginToken();
 
         return (new \Swift_Message('PHP México'))
             ->setFrom(['no-replay@phpmexico.mx' => 'David de PHP México'])
             ->setTo($user->getEmail())
             ->setBody(
-                $this->twig->render('emails/' . $template, [
+                $this->twig->render('emails/'.$template, [
                     'login_url' => $login_url,
                     'username' => $user->getUsername(),
                 ]),

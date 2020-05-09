@@ -7,9 +7,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -43,16 +41,16 @@ class PhpmxSlackSyncCommand extends Command
         $user_request = $slack->users->list();
 
         foreach ($user_request['members'] as $member) {
-            if (!$member['is_bot'] && $member['name'] !== 'slackbot') {
+            if (!$member['is_bot'] && 'slackbot' !== $member['name']) {
                 $email = $member['profile']['email'];
                 $slack_id = $member['id'];
                 $username = $member['name'];
 
                 $user = $this->userRepo->findByEmail($email);
 
-                if ($user && $user->getSlackId() == null) {
+                if ($user && null == $user->getSlackId()) {
                     $user->setSlackId($slack_id);
-                } else if (!$user) {
+                } elseif (!$user) {
                     $user = new User();
                     $user->setEmail($email);
                     $user->setUsername($username);

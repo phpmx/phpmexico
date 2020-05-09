@@ -87,7 +87,7 @@ class Contact
 
     public function __toString()
     {
-        return (string) $this->user . ' -> ' . $this->developer;
+        return (string) $this->user.' -> '.$this->developer;
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\SkillPercent;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
  * @method SkillPercent|null find($id, $lockMode = null, $lockVersion = null)
