@@ -37,7 +37,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: migrations
-      run: ./bin/console doctrine:migration:migrate --no-interaction
+      run: ./bin/console doctrine:migration:migrate --no-interaction --env=test
 
     - name: php code style
       run: ./vendor/bin/php-cs-fixer fix --dry-run --rules=@Symfony,-@PSR1,-@PSR2 src/
