@@ -1,4 +1,4 @@
-name: PHP Composer
+name: PHP Mexico Pipeline
 
 on:
   push:
@@ -15,6 +15,18 @@ jobs:
       matrix:
         php-versions: ['7.3']
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: toor
+          MYSQL_DATABASE: phpmx
+          MYSQL_USER: phpmx
+          MYSQL_PASSWORD: phpmxtoor
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
     - uses: actions/checkout@v2
 
@@ -23,6 +35,9 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
+
+    - name: migrations
+      run: ./bin/console doctrine:migration:migrate --no-interaction
 
     - name: php code style
       run: ./vendor/bin/php-cs-fixer fix --dry-run --rules=@Symfony,-@PSR1,-@PSR2 src/
