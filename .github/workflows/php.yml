@@ -42,7 +42,7 @@ jobs:
     - name: migrations
       run: ./bin/console doctrine:migration:migrate --no-interaction --env=test
       env:
-        DATABASE_URL: mysql://root:toor@localhost:{{ job.services.mysql.ports['3306'] }}/phpmx
+        DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
 
     - name: php code style
       run: ./vendor/bin/php-cs-fixer fix --dry-run --rules=@Symfony,-@PSR1,-@PSR2 src/
