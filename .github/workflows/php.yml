@@ -2,7 +2,7 @@ name: PHP Mexico Pipeline
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, feature/add-first-test-load-index-page ]
   pull_request:
     branches: [ master ]
 
@@ -29,6 +29,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Start mysql service
+      run: sudo /etc/init.d/mysql start
 
     - name: Validate composer.json and composer.lock
       run: composer validate
