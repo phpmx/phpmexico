@@ -49,6 +49,8 @@ jobs:
 
     - name: run test
       run: ./bin/phpunit
+      env:
+        DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
