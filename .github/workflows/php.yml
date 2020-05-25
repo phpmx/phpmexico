@@ -56,7 +56,7 @@ jobs:
         DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
 
     - name: php code style
-      run: ./vendor/bin/php-cs-fixer fix --dry-run --rules=@Symfony,-@PSR1,-@PSR2 src/
+      run:  ./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run
 
     - name: run test
       run: ./bin/phpunit
