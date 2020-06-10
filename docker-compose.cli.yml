@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  yarn:
+    image: node:10-slim
+    init: true
+    volumes:
+      - .:/var/www/html
+      - yarn-cache:/root/.cache/yarn/v1
+    entrypoint: yarn
+
+volumes:
+  yarn-cache:
+    name: yarn-cache
