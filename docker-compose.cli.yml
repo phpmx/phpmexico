@@ -1,13 +1,12 @@
-version: "3.7"
+version: "3"
 services:
   yarn:
     image: node:10-slim
-    init: true
+    working_dir: /var/www/html
     volumes:
       - .:/var/www/html
-      - yarn-cache:/root/.cache/yarn/v1
+      - yarn-cache:/web/.cache/yarn/v1
     entrypoint: yarn
 
 volumes:
   yarn-cache:
-    name: yarn-cache
