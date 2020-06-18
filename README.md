@@ -32,7 +32,7 @@ install javascript dependencies
 
 and build 
 
-`docker-compose -f docker-compose.cli.yml run --rm yarn install`
+`docker-compose -f docker-compose.cli.yml run --rm yarn build`
 
 ![yarn build](resources/docs/img/yarn-build.png)
 
