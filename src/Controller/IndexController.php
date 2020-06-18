@@ -2,12 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Form\LoginType;
 use App\Form\SignUpType;
 use App\Repository\SkillRepository;
 use App\Repository\UserRepository;
-use EmailChecker\EmailChecker;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\RequestOptions;
@@ -37,23 +35,19 @@ class IndexController extends AbstractController
      */
     public function index(Request $request, SkillRepository $skillRepository)
     {
-        $user = new User();
-        $form = $this->createForm(SignUpType::class, $user);
+        $form = $this->createForm(SignUpType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $checker = new EmailChecker();
-            if ($checker->isValid($form->get('email')->getData())) {
-                $this->inviteUser($user->getEmail());
+            $user = $form->getData();
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
+            $this->inviteUser($user->getEmail());
 
-                $this->addFlash('notice', 'Hemos enviado correos a tu email');
-            } else {
-                $this->addFlash('notice', 'Correo invalido');
-            }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('notice', 'Hemos enviado correos a tu email');
         }
 
         $skills = $skillRepository->findFrontpage();

@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use EmailChecker\Constraints as EmailCheckerAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -31,7 +32,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
-     * @Assert\Email
+     * @Assert\Email(message="el valor introducido parece no ser un email")
+     * @EmailCheckerAssert\NotThrowawayEmail(message="Correo Invalido")
      */
     private $email;
 
