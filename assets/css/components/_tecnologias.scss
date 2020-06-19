@@ -4,4 +4,18 @@
       height: 100px !important;
     }
   }
+
+
+  .tecnologia {
+    filter: grayscale(.5);
+    transition: filter .2s ease-out;
+
+    &:hover {
+      filter: none;
+    }
+
+    &__titulo {
+      text-align: center;
+    }
+  }
 }
