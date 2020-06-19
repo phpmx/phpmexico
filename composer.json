@@ -73,7 +73,8 @@
         "post-update-cmd": [
             "@auto-scripts"
         ],
-        "php-cs-fixer" : "./vendor/bin/php-cs-fixer fix --rules=@Symfony,-@PSR1,-@PSR2 src/"
+        "lint" : "./vendor/bin/php-cs-fixer fix --config=.php_cs.dist --verbose --show-progress=estimating",
+        "lint:check" : "./vendor/bin/php-cs-fixer fix --config=.php_cs.dist --verbose --show-progress=estimating --dry-run"
     },
     "conflict": {
         "symfony/symfony": "*"
