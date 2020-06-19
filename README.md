@@ -52,3 +52,8 @@ and run
 `./bin/phpunit`
 
 ![phpunit](resources/docs/img/phpunit.png)
+
+## Coding Style
+
+- Check code style: `composer lint:check`
+- Fix code style: `composer lint`
