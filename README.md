@@ -1,54 +1,41 @@
 # PHP México
+![php73-badge]
+> PHP México Community website
 
-## Install using Docker
+![](resources/docs/img/phpmexico.mx.png)
 
-Usando docker-compose:
+## Development setup
 
-`docker-compose up -d`
+Windows, OS X & Linux::
 
-![docker-compose up -d](resources/docs/img/final-composer-up-d.png)
+- Run docker container & install dependencies
+```sh
+docker-compose up -d
+docker-compose exec -u web web bash
+./bin/console doctrine:migra:migra
+```
 
-`docker-compose exec -u web web bash`
+- Build assets
+```sh
+docker-compose -f docker-compose.cli.yml run --rm yarn install
+docker-compose -f docker-compose.cli.yml run --rm yarn build
+```
+## Contributing
 
-and run composer install
+### Open [issues](https://github.com/phpmx/phpmexico/issues) & [projects](https://github.com/phpmx/phpmexico/projects/)
 
-![composer install](resources/docs/img/composer-install.png)
+1. Fork it (<https://github.com/phpmx/phpmexico/fork>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Run php-cs-fixer (`composer lint`)
+4. Run tests (`./bin/phpunit`)
+4. Commit your changes (`git commit -am 'Add some fooBar'`)
+5. Push to the branch (`git push origin feature/fooBar`)
+6. Create a new Pull Request
 
-also you can run 
+## Meta
 
-`./bin/console doctrine:migra:migra`
-
-![./bin/console doctrine:migra:migra](resources/docs/img/migra.png)
-
-after that you can exit of the container 
-
-`exit`
-
-install javascript dependencies 
-
-`docker-compose -f docker-compose.cli.yml run --rm yarn install`
-
-![yarn install](resources/docs/img/yarn-install.png)
-
-and build 
-
-`docker-compose -f docker-compose.cli.yml run --rm yarn build`
-
-![yarn build](resources/docs/img/yarn-build.png)
-
-and after that you can access to Url 
-
-Visit http://localhost:8080
+PHP México – [@phpmx](https://twitter.com/phpmx) – [slack://phpmx](https://phpmx.slack.com)
 
 
-## test
-
-access to container
-
-`docker-compose exec -u web web bash`
-
-and run 
-
-`./bin/phpunit`
-
-![phpunit](resources/docs/img/phpunit.png)
+<!-- Markdown link & img dfn's -->
+[php73-badge]: https://img.shields.io/badge/PHP_Version-7.3-darkgreen.svg
