@@ -20,6 +20,9 @@ docker-compose exec -u web web bash
 docker-compose -f docker-compose.cli.yml run --rm yarn install
 docker-compose -f docker-compose.cli.yml run --rm yarn build
 ```
+
+- Go to http://localhost:8080/
+
 ## Contributing
 
 ### Open [issues](https://github.com/phpmx/phpmexico/issues) & [projects](https://github.com/phpmx/phpmexico/projects/)
@@ -35,7 +38,6 @@ docker-compose -f docker-compose.cli.yml run --rm yarn build
 ## Meta
 
 PHP México – [@phpmx](https://twitter.com/phpmx) – [slack://phpmx](https://phpmx.slack.com)
-
 
 <!-- Markdown link & img dfn's -->
 [php73-badge]: https://img.shields.io/badge/PHP_Version-7.3-darkgreen.svg
