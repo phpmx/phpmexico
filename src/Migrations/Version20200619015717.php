@@ -14,7 +14,7 @@ final class Version20200619015717 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'This migration replaces the null/empty values into the skill.image field by the default phpmexico logo.';
     }
 
     public function up(Schema $schema): void
