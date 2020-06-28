@@ -8,17 +8,29 @@
 
 Windows, OS X & Linux::
 
-- Run docker container & install dependencies
+## Run project
+
+- Run docker container
 ```sh
 docker-compose up -d
 docker-compose exec -u web web bash
-./bin/console doctrine:migra:migra
+```
+
+- Install dependencies
+```bash
+composer install -o
+yarn install
+```
+
+- run migrations
+```bash
+bin/console doctrine:migra:migra
 ```
 
 - Build assets
 ```sh
-docker-compose -f docker-compose.cli.yml run --rm yarn install
-docker-compose -f docker-compose.cli.yml run --rm yarn build
+yarn install
+yarn build
 ```
 
 - Go to http://localhost:8080/
