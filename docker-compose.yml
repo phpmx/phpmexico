@@ -1,9 +1,10 @@
-
 version: '3'
 
 services:
   web:
-    image: indava/php:7.3
+    build:
+        context: .
+        dockerfile: ./dockerfiles/php/Dockerfile
     ports:
       - "8080:80"
     environment:
