@@ -35,7 +35,9 @@
     {% include 'menu.html.twig' %}
 
     {% for message in app.flashes('notice') %}
-      <div class="alert alert-success">{{ message }}</div>
+        <h4 class="center-align" style="color: #0090c7">
+            {{ message }}
+        </h4>
     {%  endfor %}
     {% block body %}{% endblock %}
 

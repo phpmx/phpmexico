@@ -47,7 +47,7 @@ class IndexController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('notice', 'Hemos enviado correos a tu email');
+            $this->addFlash('notice', 'Hemos enviado un correo a tu email');
         }
 
         $skills = $skillRepository->findFrontpage();

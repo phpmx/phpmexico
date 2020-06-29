@@ -2,10 +2,18 @@
 
 namespace App\Tests\Functional\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class IndexControllerTest extends WebTestCase
 {
+    const TEST_MAIL = 'comunity@phpmx.mx';
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
     /** @test */
     public function showIndexPage()
     {
@@ -25,7 +33,7 @@ class IndexControllerTest extends WebTestCase
      */
     public function invalidEmail(string $wrongMail, string $expectedMessage)
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/');
 
         $client->submitForm('Join', [
@@ -40,18 +48,31 @@ class IndexControllerTest extends WebTestCase
     /** @test */
     public function registerNewUser()
     {
-        $client = static::createClient();
+        $client = self::createClient();
+        $entityManager = $client->getContainer()
+            ->get('doctrine')
+            ->getManager();
 
         $client->request('GET', '/');
 
         $client->submitForm('Join', [
             'sign_up' => [
                 'username' => 'phpmx',
-                'email' => 'comunity@phpmx.mx',
+                'email' => self::TEST_MAIL,
             ],
         ]);
 
-        $this->assertStringContainsString('Hemos enviado correos a tu email', $client->getResponse()->getContent());
+        $user = $entityManager
+            ->getRepository(User::class)
+            ->findOneBy([
+                'email' => self::TEST_MAIL,
+            ]);
+
+        $this->assertInstanceOf(User::class, $user);
+        $this->assertStringContainsString('Hemos enviado un correo a tu email', $client->getResponse()->getContent());
+
+        $entityManager->remove($user);
+        $entityManager->flush();
     }
 
     public function provideWrongEmail(): array
@@ -62,7 +83,7 @@ class IndexControllerTest extends WebTestCase
                 'el valor introducido parece no ser un email',
             ],
             [
-                'comunidad@phpmexico.mx',
+                self::TEST_MAIL,
                 'Correo Invalido',
             ],
         ];
