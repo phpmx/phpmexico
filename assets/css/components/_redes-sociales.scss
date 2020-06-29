@@ -1,5 +1,5 @@
 .redes-sociales {
-  background-color: $primary-color !important;
+  background-color: $primary-color;
   padding: 1% 0 3%;
   margin-top: -2%;
 
@@ -7,7 +7,7 @@
     margin-top: -6%;
   }
   @include mq-min-max(tablet,tablet){
-    margin-top: -3% !important;
+    margin-top: -3%;
   }
   
   h3 {
@@ -21,16 +21,16 @@
 
     @include mq-max(mobile-big){
       .img1ss{
-        width: 75px !important;
+        width: 75px;
       } 
       .img2ss{
-        width: 53px !important;
+        width: 53px;
       } 
       .img3ss{
-        width: 67px !important;
+        width: 67px;
       } 
       .img4ss{
-        width: 50px !important;
+        width: 50px;
       } 
     }
   }

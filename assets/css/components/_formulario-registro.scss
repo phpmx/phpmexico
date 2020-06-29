@@ -9,15 +9,13 @@
     @include mq-max(mobile-big){
       display: flex;
       justify-content: center;
-      //margin-top: -27%;
-      //margin-bottom: -16%;
     }
 
     @include mq-min-max(tablet,tablet){
       margin-right: -1% !important;
     }
     img {
-      //margin: 15% -20%;
+        width: 85%
     }
   }
 
