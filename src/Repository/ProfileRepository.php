@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Profile;
+use App\Entity\Skill;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,7 +22,11 @@ class ProfileRepository extends ServiceEntityRepository
         parent::__construct($registry, Profile::class);
     }
 
-    public function findBySkill($skill)
+    /**
+     * @param Skill $skill
+     * @return int|mixed|string
+     */
+    public function findBySkill(Skill $skill)
     {
         return $this->createQueryBuilder('p')
             ->select('p')

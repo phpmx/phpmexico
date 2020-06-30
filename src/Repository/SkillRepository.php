@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Skill;
@@ -19,6 +21,9 @@ class SkillRepository extends ServiceEntityRepository
         parent::__construct($registry, Skill::class);
     }
 
+    /**
+     * @return int|mixed|string
+     */
     public function findFrontpage()
     {
         return $this->createQueryBuilder('s')

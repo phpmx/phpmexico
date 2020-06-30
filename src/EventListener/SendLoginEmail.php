@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventListener;
 
 use App\Entity\User;
@@ -7,19 +9,34 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Twig\Environment;
+use Swift_Mailer;
+use Swift_Message;
+use \Twig\Error\LoaderError;
+use \Twig\Error\RuntimeError;
+use \Twig\Error\SyntaxError;
 
 class SendLoginEmail implements EventSubscriber
 {
+    /** @var Swift_Mailer $mailer */
     protected $mailer;
 
+    /** @var Environment $twig */
     protected $twig;
 
-    public function __construct(\Swift_Mailer $mailer, Environment $twig)
+    /**
+     * SendLoginEmail constructor.
+     * @param Swift_Mailer $mailer
+     * @param Environment $twig
+     */
+    public function __construct(Swift_Mailer $mailer, Environment $twig)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
     }
 
+    /**
+     * @return array|string[]
+     */
     public function getSubscribedEvents()
     {
         return [
@@ -28,6 +45,9 @@ class SendLoginEmail implements EventSubscriber
         ];
     }
 
+    /**
+     * @param LifecycleEventArgs $args
+     */
     public function postUpdate(LifecycleEventArgs $args)
     {
         $user = $args->getObject();
@@ -43,6 +63,9 @@ class SendLoginEmail implements EventSubscriber
         }
     }
 
+    /**
+     * @param LifecycleEventArgs $args
+     */
     public function postPersist(LifecycleEventArgs $args)
     {
         $isUser = $args->getObject();
@@ -58,7 +81,11 @@ class SendLoginEmail implements EventSubscriber
             ));
     }
 
-    private function login(LifecycleEventArgs $args)
+    /**
+     * @param LifecycleEventArgs $args
+     * @return User
+     */
+    private function login(LifecycleEventArgs $args): User
     {
         /** @var User $user */
         $user = $args->getObject();
@@ -74,11 +101,19 @@ class SendLoginEmail implements EventSubscriber
         return $user;
     }
 
-    private function message(User $user, string $template)
+    /**
+     * @param User $user
+     * @param string $template
+     * @return Swift_Message
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    private function message(User $user, string $template): Swift_Message
     {
         $login_url = 'https://phpmexico.mx/?token='.$user->getLoginToken();
 
-        return (new \Swift_Message('PHP México'))
+        return (new Swift_Message('PHP México'))
             ->setFrom(['no-replay@phpmexico.mx' => 'David de PHP México'])
             ->setTo($user->getEmail())
             ->setBody(

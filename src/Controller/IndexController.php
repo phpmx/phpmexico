@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\User;
@@ -16,6 +18,7 @@ use ReCaptcha\ReCaptcha;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends AbstractController
 {
@@ -34,8 +37,11 @@ class IndexController extends AbstractController
 
     /**
      * @Route("/", name="index")
+     * @param Request $request
+     * @param SkillRepository $skillRepository
+     * @return Response
      */
-    public function index(Request $request, SkillRepository $skillRepository)
+    public function index(Request $request, SkillRepository $skillRepository): Response
     {
         $user = new User();
         $form = $this->createForm(SignUpType::class, $user);
@@ -66,8 +72,11 @@ class IndexController extends AbstractController
 
     /**
      * @Route("/login", name="login")
+     * @param Request $request
+     * @param ReCaptcha $reCaptcha
+     * @return Response
      */
-    public function login(Request $request, ReCaptcha $reCaptcha)
+    public function login(Request $request, ReCaptcha $reCaptcha): Response
     {
         $form = $this->createForm(LoginType::class);
         $form->handleRequest($request);
@@ -91,7 +100,10 @@ class IndexController extends AbstractController
                     $em->persist($user);
                     $em->flush();
 
-                    $this->addFlash('notice', 'Te enviamos un correo con el link para ingresar a tu cuenta');
+                    $this->addFlash(
+                        'notice',
+                        'Te enviamos un correo con el link para ingresar a tu cuenta'
+                    );
                 } else {
                     $this->addFlash('notice', 'Correo no encontrado');
                 }
@@ -103,19 +115,18 @@ class IndexController extends AbstractController
         ]);
     }
 
+    /**
+     * @param string $email
+     */
     private function inviteUser(string $email)
     {
-        $url = $this->getParameter('SLACK_URL_INVITE');
-        $token = $this->getParameter('SLACK_TOKEN');
-        $teamId = $this->getParameter('SLACK_TEAMID');
-
         try {
-            $this->client->post($url, [
+            $this->client->post($this->getParameter('SLACK_URL_INVITE'), [
                 RequestOptions::JSON => [
-                    'token' => $token,
-                    'email' => $email,
+                    'token' => $this->getParameter('SLACK_TOKEN'),
+                    'email' => email,
                     'channel_ids' => 'C0PDPQJ3B,C21DD0RMW,C0PPV4HS7,C0PPU2NTD',
-                    'team_id' => $teamId,
+                    'team_id' => $this->getParameter('SLACK_TEAMID'),
                 ],
             ]);
         } catch (ClientException $e) {

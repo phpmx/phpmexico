@@ -1,7 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -86,21 +90,31 @@ class Job
 
     public function __construct()
     {
-        $this->created_at = new \DateTime();
+        $this->created_at = new DateTime();
         $this->active = false;
-        $this->updated_at = new \DateTime();
+        $this->updated_at = new DateTime();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * @param string $description
+     * @return $this
+     */
     public function setDescription(string $description): self
     {
         $this->description = $description;
@@ -108,11 +122,18 @@ class Job
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getRequirements(): ?string
     {
         return $this->requirements;
     }
 
+    /**
+     * @param string $requirements
+     * @return $this
+     */
     public function setRequirements(string $requirements): self
     {
         $this->requirements = $requirements;
@@ -120,11 +141,18 @@ class Job
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getContact(): ?string
     {
         return $this->contact;
     }
 
+    /**
+     * @param string $contact
+     * @return $this
+     */
     public function setContact(string $contact): self
     {
         $this->contact = $contact;
@@ -132,11 +160,18 @@ class Job
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getOwner(): ?User
     {
         return $this->owner;
     }
 
+    /**
+     * @param User|null $owner
+     * @return $this
+     */
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
@@ -144,11 +179,18 @@ class Job
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle(string $title): self
     {
         $this->title = $title;
@@ -156,23 +198,37 @@ class Job
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    /**
+     * @param DateTimeInterface $created_at
+     * @return $this
+     */
+    public function setCreatedAt(DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
 
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function getActive(): ?bool
     {
         return $this->active;
     }
 
+    /**
+     * @param bool $active
+     * @return $this
+     */
     public function setActive(bool $active): self
     {
         $this->active = $active;
@@ -180,23 +236,37 @@ class Job
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updated_at): self
+    /**
+     * @param DateTimeInterface $updated_at
+     * @return $this
+     */
+    public function setUpdatedAt(DateTimeInterface $updated_at): self
     {
         $this->updated_at = $updated_at;
 
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getApplicationUrl(): ?string
     {
         return $this->application_url;
     }
 
+    /**
+     * @param string|null $application_url
+     * @return $this
+     */
     public function setApplicationUrl(?string $application_url): self
     {
         $this->application_url = $application_url;
@@ -204,16 +274,26 @@ class Job
         return $this;
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return $this->title;
     }
 
+    /**
+     * @return string|null
+     */
     public function getCompany(): ?string
     {
         return $this->company;
     }
 
+    /**
+     * @param string $company
+     * @return $this
+     */
     public function setCompany(string $company): self
     {
         $this->company = $company;
@@ -221,11 +301,18 @@ class Job
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPhone(): ?string
     {
         return $this->phone;
     }
 
+    /**
+     * @param string $phone
+     * @return $this
+     */
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
@@ -233,11 +320,18 @@ class Job
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return $this
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -245,11 +339,18 @@ class Job
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getSalary(): ?string
     {
         return $this->salary;
     }
 
+    /**
+     * @param string|null $salary
+     * @return $this
+     */
     public function setSalary(?string $salary): self
     {
         $this->salary = $salary;

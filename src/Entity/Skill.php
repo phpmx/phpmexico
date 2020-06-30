@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -55,16 +57,26 @@ class Skill
         $this->profiles = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -92,6 +104,10 @@ class Skill
         return $this->profiles;
     }
 
+    /**
+     * @param Profile $profile
+     * @return $this
+     */
     public function addProfile(Profile $profile): self
     {
         if (!$this->profiles->contains($profile)) {
@@ -102,6 +118,10 @@ class Skill
         return $this;
     }
 
+    /**
+     * @param Profile $profile
+     * @return $this
+     */
     public function removeProfile(Profile $profile): self
     {
         if ($this->profiles->contains($profile)) {
@@ -112,16 +132,26 @@ class Skill
         return $this;
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return $this->name;
     }
 
+    /**
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * @param string|null $description
+     * @return $this
+     */
     public function setDescription(?string $description): self
     {
         $this->description = $description;
@@ -129,11 +159,18 @@ class Skill
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
+    /**
+     * @param string $slug
+     * @return $this
+     */
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
@@ -141,11 +178,18 @@ class Skill
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getImageUrl(): ?string
     {
         return $this->image_url;
     }
 
+    /**
+     * @param string|null $image_url
+     * @return $this
+     */
     public function setImageUrl(?string $image_url): self
     {
         $this->image_url = $image_url;

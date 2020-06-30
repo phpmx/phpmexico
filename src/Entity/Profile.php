@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -59,16 +61,26 @@ class Profile
         $this->skills = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param string $name
+     * @return $this
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -76,16 +88,23 @@ class Profile
         return $this;
     }
 
+    /**
+     * @return User|null
+     */
     public function getUser(): ?User
     {
         return $this->user;
     }
 
+    /**
+     * Set (or unset) the owning side of the relation if necessary
+     * @param User|null $user
+     * @return $this
+     */
     public function setUser(?User $user): self
     {
         $this->user = $user;
 
-        // set (or unset) the owning side of the relation if necessary
         $newProfile = null === $user ? null : $this;
         if ($newProfile !== $user->getProfile()) {
             $user->setProfile($newProfile);
@@ -94,16 +113,26 @@ class Profile
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return $this->name;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLastname(): ?string
     {
         return $this->lastname;
     }
 
+    /**
+     * @param string $lastname
+     * @return $this
+     */
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
@@ -111,11 +140,18 @@ class Profile
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function isDeveloper(): ?bool
     {
         return $this->developer;
     }
 
+    /**
+     * @param bool|null $developer
+     * @return $this
+     */
     public function setDeveloper(?bool $developer): self
     {
         $this->developer = $developer;
@@ -123,11 +159,18 @@ class Profile
         return $this;
     }
 
+    /**
+     * @return bool|null
+     */
     public function isHr(): ?bool
     {
         return $this->hr;
     }
 
+    /**
+     * @param bool|null $hr
+     * @return $this
+     */
     public function setHr(?bool $hr): self
     {
         $this->hr = $hr;
@@ -143,6 +186,10 @@ class Profile
         return $this->skills;
     }
 
+    /**
+     * @param Skill $skill
+     * @return $this
+     */
     public function addSkill(Skill $skill): self
     {
         if (!$this->skills->contains($skill)) {
@@ -152,6 +199,10 @@ class Profile
         return $this;
     }
 
+    /**
+     * @param Skill $skill
+     * @return $this
+     */
     public function removeSkill(Skill $skill): self
     {
         if ($this->skills->contains($skill)) {
@@ -161,11 +212,18 @@ class Profile
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * @param string|null $title
+     * @return $this
+     */
     public function setTitle(?string $title): self
     {
         $this->title = $title;

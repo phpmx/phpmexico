@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\SkillGroup;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,7 +22,11 @@ class SkillGroupRepository extends ServiceEntityRepository
         parent::__construct($registry, SkillGroup::class);
     }
 
-    public function findByUser($user)
+    /**
+     * @param User $user
+     * @return int|mixed|string
+     */
+    public function findByUser(User $user)
     {
         return $this->createQueryBuilder('sg')
             ->join('sg.skills', 's')

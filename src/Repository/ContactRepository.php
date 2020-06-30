@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repository;
 
 use App\Entity\Contact;
@@ -20,6 +22,10 @@ class ContactRepository extends ServiceEntityRepository
         parent::__construct($registry, Contact::class);
     }
 
+    /**
+     * @param User $user
+     * @return int|mixed|string
+     */
     public function findByUser(User $user)
     {
         return $this->createQueryBuilder('c')

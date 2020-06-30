@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Contact;
@@ -16,6 +18,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProfileController extends AbstractController
 {
@@ -29,6 +33,9 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile", name="profile")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param EventDispatcherInterface $dispatcher
+     * @return RedirectResponse|Response
      */
     public function index(Request $request, EventDispatcherInterface $dispatcher)
     {
@@ -62,6 +69,8 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile/preference", name="profile_preference")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function preference(Request $request)
     {
@@ -84,8 +93,18 @@ class ProfileController extends AbstractController
 
     /**
      * @Route("/u/{username}", name="profile_user")
+     * @param Request $request
+     * @param User $developer
+     * @param CrawlerDetect $crawlerDetect
+     * @param SkillGroupRepository $sgr
+     * @return Response
      */
-    public function user(Request $request, User $developer, CrawlerDetect $crawlerDetect, SkillGroupRepository $sgr)
+    public function user(
+        Request $request,
+        User $developer,
+        CrawlerDetect $crawlerDetect,
+        SkillGroupRepository $sgr
+    ): Response
     {
         /** @var User $user */
         $user = $this->getUser();

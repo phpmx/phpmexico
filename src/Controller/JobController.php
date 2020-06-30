@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Job;
@@ -10,13 +12,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class JobController extends AbstractController
 {
     /**
      * @Route("/jobs", name="jobs", options={"sitemap" = true})
+     * @param JobRepository $jobRepository
+     * @return Response
      */
-    public function index(JobRepository $jobRepository)
+    public function index(JobRepository $jobRepository): Response
     {
         $jobs = $jobRepository->findBy([
             'active' => true,
@@ -30,6 +36,8 @@ class JobController extends AbstractController
     /**
      * @Route("/job/create", name="jobs_create")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @return RedirectResponse|Response
      */
     public function create(Request $request)
     {
@@ -56,8 +64,11 @@ class JobController extends AbstractController
     /**
      * @Route("/job/own", name="jobs_own")
      * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param JobRepository $jobRepository
+     * @return Response
      */
-    public function own(Request $request, JobRepository $jobRepository)
+    public function own(Request $request, JobRepository $jobRepository): Response
     {
         $jobs = $jobRepository->findOwnJobPost($this->getUser());
 
@@ -78,8 +89,10 @@ class JobController extends AbstractController
     /**
      * @Route("/job/offerts", name="job_offerts")
      * @IsGranted("ROLE_USER")
+     * @param ContactRepository $contactRepository
+     * @return Response
      */
-    public function offerts(ContactRepository $contactRepository)
+    public function offerts(ContactRepository $contactRepository): Response
     {
         $user = $this->getUser();
         $offerts = $contactRepository->findByUser($user);
@@ -91,8 +104,10 @@ class JobController extends AbstractController
 
     /**
      * @Route("/job/{id}", name="job_show", options={"sitemap" = true})
+     * @param Job $job
+     * @return Response
      */
-    public function show(Job $job)
+    public function show(Job $job): Response
     {
         return $this->render('jobs/job.html.twig', [
             'job' => $job,
