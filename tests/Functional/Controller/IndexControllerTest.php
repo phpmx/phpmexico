@@ -83,7 +83,7 @@ class IndexControllerTest extends WebTestCase
                 'el valor introducido parece no ser un email',
             ],
             [
-                self::TEST_MAIL,
+                '0815.su', //not throwable email vendor/email-checker/res/throwaway_domains.txt
                 'Correo Invalido',
             ],
         ];
