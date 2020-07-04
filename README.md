@@ -6,35 +6,50 @@
 
 ## Development setup
 
-Windows, OS X & Linux::
+Windows, OS X & Linux:
+
+
+## Requirements:
+
+You need to have Docker and Docker-compose installed on your machine.
 
 ## Run project
 
-- Run docker container
+For run docker and enter into the container typing in a terminal the following commands.
+
 ```sh
 docker-compose up -d
 docker-compose exec -u web web bash
 ```
 
-- Install dependencies
+To install the necessary dependenceies of the project, both for php
+and javascript, inside the container execute the following commands.
+
 ```bash
 composer install -o
 yarn install
 ```
 
-- run migrations
+If is your first time running this project, you must type the
+following commands to migrate to database, remember to run this
+command every time to added changes to database.
+
 ```bash
 bin/console doctrine:migra:migra
 ```
 
-- Build assets
+For build assets, you only need run the following command, remember
+run this command every time when you add changes to styles files or
+javascript files.
+
 ```sh
 yarn install
 yarn build
 ```
 
-- Go to http://localhost:8080/
-
+To see the portal of phpmx, write the address `http://localhost:8080/` 
+in your browser.
+ 
 ## Contributing
 
 ### Open [issues](https://github.com/phpmx/phpmexico/issues) & [projects](https://github.com/phpmx/phpmexico/projects/)
