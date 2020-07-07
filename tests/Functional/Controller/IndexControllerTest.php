@@ -80,7 +80,7 @@ class IndexControllerTest extends WebTestCase
         return [
             [
                 'bad mail_bad format.com',
-                'el valor introducido parece no ser un email',
+                'El valor introducido parece no ser un email válido',
             ],
             [
                 '0815.su', //not throwable email vendor/email-checker/res/throwaway_domains.txt

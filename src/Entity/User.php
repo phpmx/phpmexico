@@ -32,7 +32,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
-     * @Assert\Email(message="el valor introducido parece no ser un email")
+     * @Assert\Email(message="El valor introducido parece no ser un email válido")
      * @EmailCheckerAssert\NotThrowawayEmail(message="Correo Invalido")
      */
     private $email;
