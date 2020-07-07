@@ -34,10 +34,12 @@
 
     {% include 'menu.html.twig' %}
 
-    {% for message in app.flashes('notice') %}
-        <h4 class="center-align" style="color: #0090c7">
-            {{ message }}
-        </h4>
+    {% for message in app.flashes('success') %}
+      <div id="card-alert" class="card green lighten-5 center-align">
+        <div class="card-content green-text">
+          <p>{{ message }}.</p>
+        </div>
+      </div>
     {%  endfor %}
     {% block body %}{% endblock %}
 

@@ -3,16 +3,11 @@
 namespace App\Tests\Functional\Controller;
 
 use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class IndexControllerTest extends WebTestCase
 {
     const TEST_MAIL = 'comunity@phpmx.mx';
-    /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
 
     /** @test */
     public function showIndexPage()
@@ -69,7 +64,7 @@ class IndexControllerTest extends WebTestCase
             ]);
 
         $this->assertInstanceOf(User::class, $user);
-        $this->assertStringContainsString('Hemos enviado un correo a tu email', $client->getResponse()->getContent());
+        $this->assertStringContainsString('Enviamos un enlace a tu email para verificar tu cuenta y completar tu perfil.', $client->getResponse()->getContent());
 
         $entityManager->remove($user);
         $entityManager->flush();
