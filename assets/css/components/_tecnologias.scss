@@ -1,17 +1,15 @@
 .tecnologias{
-  .card-content {
-    img.responsive-img {
-      height: 100px !important;
-    }
-  }
-
-
   .tecnologia {
     filter: grayscale(.5);
     transition: filter .2s ease-out;
 
     &:hover {
       filter: none;
+    }
+
+    &__imagen {
+      height: 250px;
+      object-fit: scale-down;
     }
 
     &__titulo {
