@@ -27,3 +27,8 @@ yarn-error.log
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> env/ide ###
+.idea/
+###< env/ide ###
+
