@@ -23,7 +23,7 @@ docker-compose exec -u web web bash
 ```
 
 To install the necessary dependencies of the project, both for php
-and javascript, inside the container execute the following commands.
+and javascript, execute the following commands inside the container.
 
 ```bash
 composer install -o
