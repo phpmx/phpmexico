@@ -10,11 +10,15 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
 {
+    /** @var CrawlNode */
+    private $crawlNode;
+
     /** @var string */
     private $meetupEventsUrl;
 
-    public function __construct(string $meetupEventsUrl)
+    public function __construct(CrawlNode $crawlNode, string $meetupEventsUrl)
     {
+        $this->crawlNode = $crawlNode;
         $this->meetupEventsUrl = $meetupEventsUrl;
     }
 
@@ -28,8 +32,8 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
         $event
             ->setMeetupId($this->crawlId($eventListNode))
             ->setTitle($this->crawlTitle($eventListNode))
-            ->setScheduledAt($this->crawlTimestamp($eventListNode))
-            ->setPlace($this->crawlAddress($eventListNode))
+            ->setScheduledAt($this->crawlScheduledAt($eventListNode))
+            ->setPlace($this->crawlPlace($eventListNode))
             ->setDescription($this->crawlDescription($eventListNode))
             ->setAttendingCount($this->crawlAttendingCount($eventListNode))
             ->setSpeaker($this->crawlSpeaker($eventListNode))
@@ -52,64 +56,100 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
 
     private function crawlId(Crawler $eventListNode): int
     {
-        $composedId = $eventListNode->filter('.eventCard')
-            ->eq(0)
-            ->attr('id');
+        return $this->crawlNode->handle(
+            function () use ($eventListNode) {
+                $composedId = $eventListNode->filter('.eventCard')
+                    ->eq(0)
+                    ->attr('id');
 
-        list(, $id) = explode('-', $composedId);
+                list(, $id) = explode('-', $composedId);
 
-        return intval($id);
+                return intval($id);
+            },
+            0,
+            'Unable to find the meetupId element.'
+        );
     }
 
-    private function crawlTimestamp(Crawler $eventListNode): DateTime
+    private function crawlScheduledAt(Crawler $eventListNode): DateTime
     {
-        $time = $eventListNode->filter('.eventTimeDisplay')
-            ->eq(0)
-            ->filter('time')
-            ->eq(0)
-            ->attr('datetime');
+        return $this->crawlNode->handle(
+            function () use ($eventListNode) {
+                $time = $eventListNode->filter('.eventTimeDisplay')
+                    ->eq(0)
+                    ->filter('time')
+                    ->eq(0)
+                    ->attr('datetime');
 
-        $eventDate = new DateTime();
+                $eventDate = new DateTime();
 
-        return $eventDate->setTimestamp($time / 1000);
+                return $eventDate->setTimestamp($time / 1000);
+            },
+            new DateTime(),
+            'Unable to find the scheduled at element.'
+        );
     }
 
     private function crawlTitle(Crawler $eventListNode): string
     {
-        return $eventListNode->filter('.eventCardHead--title')
-            ->eq(0)
-            ->text();
+        return $this->crawlNode->handle(
+            function () use ($eventListNode) {
+                return $eventListNode->filter('.eventCardHead--title')
+                    ->eq(0)
+                    ->text();
+            },
+            '',
+            'Unable to find the title element.'
+        );
     }
 
-    private function crawlAddress(Crawler $eventListNode): string
+    private function crawlPlace(Crawler $eventListNode): string
     {
-        return $eventListNode->filter('address')
-            ->eq(0)
-            ->filter('p')
-            ->eq(0)
-            ->text();
+        return $this->crawlNode->handle(
+            function () use ($eventListNode) {
+                return $eventListNode->filter('address')
+                    ->eq(0)
+                    ->filter('p')
+                    ->eq(0)
+                    ->text();
+            },
+            '',
+            'Unable to find the place element.'
+        );
     }
 
     private function crawlDescription(Crawler $eventListNode): string
     {
-        return $eventListNode->filter('.eventCard')
-            ->eq(0)
-            ->filter('.flex-item--shrink')
-            ->eq(2)
-            ->filter('p')
-            ->eq(1)
-            ->text();
+        return $this->crawlNode->handle(
+            function () use ($eventListNode) {
+                return $eventListNode->filter('.eventCard')
+                    ->eq(0)
+                    ->filter('.flex-item--shrink')
+                    ->eq(2)
+                    ->filter('p')
+                    ->eq(1)
+                    ->text();
+            },
+            '',
+            'Unable to find the description element.'
+        );
     }
 
     private function crawlAttendingCount(Crawler $eventListNode): int
     {
-        $attendingCount = $eventListNode->filter('.avatarRow--attendingCount')
-            ->eq(0)
-            ->filter('span')
-            ->eq(0)
-            ->text();
+        return $this->crawlNode->handle(
+            function () use ($eventListNode) {
+                $attendingCount = $eventListNode->filter('.avatarRow--attendingCount')
+                    ->eq(0)
+                    ->filter('span')
+                    ->eq(0)
+                    ->text();
 
-        return intval($attendingCount);
+                return intval($attendingCount);
+            },
+            0,
+            'Unable to find the attending count element.'
+        );
     }
 
     private function crawlSpeaker(Crawler $eventListNode): string

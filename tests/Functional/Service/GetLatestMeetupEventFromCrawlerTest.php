@@ -3,18 +3,27 @@
 namespace App\Tests\Unit\Service;
 
 use App\Service\GetLatestMeetupEventFromCrawler;
-use Exception;
-use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class GetLatestMeetupEventFromCrawlerTest extends TestCase
+class GetLatestMeetupEventFromCrawlerTest extends WebTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $kernel = static::createKernel();
+        $kernel->boot();
+
+        self::$container = $kernel->getContainer();
+    }
+
     /**
      * @test
      */
     public function theServiceShouldCrawlTheEvent(): void
     {
-        $source = __DIR__.'/../../fixtures/meetup_response_example.html';
-        $getLatestEvent = new GetLatestMeetupEventFromCrawler($source);
+        $source = self::$container->getParameter('meetup_events_url');
+        $getLatestEvent = self::$container->get(GetLatestMeetupEventFromCrawler::class);
         $meetupEvent = $getLatestEvent->handle();
 
         $this->assertSame($meetupEvent->getMeetupId(), 123456);
@@ -26,17 +35,5 @@ class GetLatestMeetupEventFromCrawlerTest extends TestCase
             '2020-07-22 14:00:00',
             $meetupEvent->getScheduledAt()->format('Y-m-d H:i:s')
         );
-    }
-
-    /**
-     * @test
-     */
-    public function theServiceShouldFailIfSourceIsWrong(): void
-    {
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage('Unable to read the provided source test.');
-
-        $getLatestEvent = new GetLatestMeetupEventFromCrawler('test');
-        $getLatestEvent->handle();
     }
 }

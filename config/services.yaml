@@ -38,8 +38,10 @@ services:
             - { name: 'console.command', command: 'phpmx:slack:sync' }
 
     App\Service\GetLatestMeetupEventFromCrawler:
+        public: true
         class: App\Service\GetLatestMeetupEventFromCrawler
         arguments:
+            - '@App\Service\CrawlNode'
             - '%meetup_events_url%'
 
     App\Contracts\GetLastMeetupEventInterface: '@App\Service\GetLatestMeetupEventFromCrawler'

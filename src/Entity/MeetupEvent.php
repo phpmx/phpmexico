@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MeetupEventRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -74,12 +75,12 @@ class MeetupEvent
         return $this;
     }
 
-    public function getScheduledAt(): ?\DateTimeInterface
+    public function getScheduledAt(): ?DateTimeInterface
     {
         return $this->scheduledAt;
     }
 
-    public function setScheduledAt(\DateTimeInterface $scheduledAt): self
+    public function setScheduledAt(DateTimeInterface $scheduledAt): self
     {
         $this->scheduledAt = $scheduledAt;
 
