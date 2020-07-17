@@ -8,6 +8,13 @@ use Symfony\Component\Console\Tester\CommandTester;
 
 class GetLatestMeetupEventCommandTest extends KernelTestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        date_default_timezone_set('America/Mexico_City');
+    }
+
     /**
      * @test
      */
