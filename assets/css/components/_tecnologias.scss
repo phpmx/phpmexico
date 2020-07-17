@@ -7,13 +7,16 @@
       filter: none;
     }
 
-    &__imagen {
-      height: 250px;
-      object-fit: scale-down;
-    }
-
     &__titulo {
       text-align: center;
+    }
+  }
+
+  .card {
+    .tecnologia__imagen {
+      width: 150px;
+      margin: auto;
+      object-fit: scale-down;
     }
   }
 }
