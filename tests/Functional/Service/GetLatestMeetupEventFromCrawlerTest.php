@@ -30,7 +30,7 @@ class GetLatestMeetupEventFromCrawlerTest extends WebTestCase
         $this->assertSame($meetupEvent->getUrl(), $source. 123456);
         $this->assertSame($meetupEvent->getTitle(), 'El título del meetup');
         $this->assertSame($meetupEvent->getAttendingCount(), 50);
-        $this->assertSame($meetupEvent->getDescription(), 'La decripción del meetup');
+        $this->assertSame($meetupEvent->getDescription(), 'La descripción del meetup');
         $this->assertSame(
             '2020-07-22 14:00:00',
             $meetupEvent->getScheduledAt()->format('Y-m-d H:i:s')
