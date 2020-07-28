@@ -22,26 +22,17 @@ class CrawlNode
      *
      * @return mixed
      */
-    public function handle(callable $nodeFinder, $default, string $errorMessage = '')
+    public function handle(callable $nodeFinder, $default, string $errorMessage = self::DEFAULT_MESSAGE)
     {
         try {
             return call_user_func($nodeFinder);
         } catch (Exception $exception) {
             $this->logger->warning('CrawlNode@handle', [
-                'message' => $this->getErrorMessage($errorMessage),
+                'message' => $errorMessage,
                 'exception' => $exception,
             ]);
         }
 
         return  $default;
-    }
-
-    private function getErrorMessage(string $errorMessage): string
-    {
-        if ('' !== $errorMessage) {
-            return $errorMessage;
-        }
-
-        return self::DEFAULT_MESSAGE;
     }
 }
