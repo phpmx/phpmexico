@@ -114,11 +114,16 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
                     ->eq(0)
                     ->attr('style');
 
-
                 $matches = [];
-                preg_match('/("(.*?)")|(\'(.*?)\')|(&quotes;(.*?)&quotes;)/', $style, $matches);
+                preg_match('/url\((.*?)\)/', $style, $matches);
 
-                return $matches[count($matches) - 1];
+                $url = $matches[count($matches) - 1];
+                $url = str_replace('&quotes;', '', $url);
+                $url = str_replace('"', '', $url);
+                $url = str_replace('\'', '', $url);
+
+
+                return $url;
             },
             '',
             'Unable to find the image element.'
