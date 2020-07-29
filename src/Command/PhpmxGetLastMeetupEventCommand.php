@@ -59,6 +59,7 @@ class PhpmxGetLastMeetupEventCommand extends Command
                 ->setScheduledAt($latestEvent->getScheduledAt())
                 ->setPlace($latestEvent->getPlace())
                 ->setDescription($latestEvent->getDescription())
+                ->setImage($latestEvent->getImage())
                 ->setAttendingCount($latestEvent->getAttendingCount())
                 ->setSpeaker($latestEvent->getSpeaker())
                 ->setUrl($latestEvent->getUrl());

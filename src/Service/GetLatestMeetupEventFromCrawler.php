@@ -32,6 +32,7 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
         $event
             ->setMeetupId($this->crawlId($eventListNode))
             ->setTitle($this->crawlTitle($eventListNode))
+            ->setImage($this->crawlImage($eventListNode))
             ->setScheduledAt($this->crawlScheduledAt($eventListNode))
             ->setPlace($this->crawlPlace($eventListNode))
             ->setDescription($this->crawlDescription($eventListNode))
@@ -47,7 +48,9 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
      */
     private function getHtml(): string
     {
-        if (!file_exists($this->meetupEventsUrl)) {
+        $isRequest = strpos($this->meetupEventsUrl, 'http') !== false;
+
+        if (!$isRequest && !file_exists($this->meetupEventsUrl)) {
             throw new Exception(sprintf('Unable to read the provided source %s.', $this->meetupEventsUrl));
         }
 
@@ -103,6 +106,25 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
         );
     }
 
+    private function crawlImage(Crawler $eventListNode): string
+    {
+        return $this->crawlNode->handle(
+            function () use ($eventListNode) {
+                $style = $eventListNode->filter('.eventCardHead--photo')
+                    ->eq(0)
+                    ->attr('style');
+
+
+                $matches = [];
+                preg_match('/("(.*?)")|(\'(.*?)\')|(&quotes;(.*?)&quotes;)/', $style, $matches);
+
+                return $matches[count($matches) - 1];
+            },
+            '',
+            'Unable to find the image element.'
+        );
+    }
+
     private function crawlPlace(Crawler $eventListNode): string
     {
         return $this->crawlNode->handle(
@@ -124,10 +146,8 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
             function () use ($eventListNode) {
                 return $eventListNode->filter('.eventCard')
                     ->eq(0)
-                    ->filter('.flex-item--shrink')
-                    ->eq(2)
                     ->filter('p')
-                    ->eq(1)
+                    ->eq(2)
                     ->text();
             },
             '',
