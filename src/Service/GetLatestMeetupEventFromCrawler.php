@@ -48,7 +48,7 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
      */
     private function getHtml(): string
     {
-        $isRequest = strpos($this->meetupEventsUrl, 'http') !== false;
+        $isRequest = false !== strpos($this->meetupEventsUrl, 'http');
 
         if (!$isRequest && !file_exists($this->meetupEventsUrl)) {
             throw new Exception(sprintf('Unable to read the provided source %s.', $this->meetupEventsUrl));
@@ -121,7 +121,6 @@ class GetLatestMeetupEventFromCrawler implements GetLastMeetupEventInterface
                 $url = str_replace('&quotes;', '', $url);
                 $url = str_replace('"', '', $url);
                 $url = str_replace('\'', '', $url);
-
 
                 return $url;
             },
