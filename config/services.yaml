@@ -9,6 +9,7 @@ parameters:
     SLACK_TOKEN: '%env(SLACK_TOKEN)%'
     SLACK_TEAMID: '%env(SLACK_TEAMID)%'
     google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
+    meetup_events_url: '%env(MEETUP_EVENTS_URL)%'
 
 services:
     # default configuration for services in *this* file
@@ -35,6 +36,15 @@ services:
     App\Command\PhpmxSlackSyncCommand:
         tags:
             - { name: 'console.command', command: 'phpmx:slack:sync' }
+
+    App\Service\GetLatestMeetupEventFromCrawler:
+        public: true
+        class: App\Service\GetLatestMeetupEventFromCrawler
+        arguments:
+            - '@App\Service\CrawlNode'
+            - '%meetup_events_url%'
+
+    App\Contracts\GetLastMeetupEventInterface: '@App\Service\GetLatestMeetupEventFromCrawler'
 
     App\EventListener\SendLoginEmail:
         tags:
