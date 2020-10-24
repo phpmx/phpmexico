@@ -11,6 +11,7 @@ Windows, OS X & Linux::
 - Run docker container & install dependencies
 ```sh
 docker-compose up -d
+composer install
 docker-compose exec -u web web bash
 ./bin/console doctrine:migra:migra
 ```
