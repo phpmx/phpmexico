@@ -83,4 +83,13 @@ class IndexControllerTest extends WebTestCase
             ],
         ];
     }
+
+    /** @test */
+    public function betaShouldReturnASuccessStatus()
+    {
+        $client = self::createClient();
+        $client->request('GET', '/beta');
+        $responseCode = $client->getResponse()->getStatusCode();
+        $this->assertEquals(200, $responseCode);
+    }
 }
