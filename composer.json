@@ -30,7 +30,7 @@
     "symfony/framework-bundle": "4.4.*",
     "symfony/mercure-bundle": "^0.1.1",
     "symfony/monolog-bundle": "^3.4",
-    "symfony/security-csrf": "4.2.*",
+    "symfony/security-csrf": "4.4.*",
     "symfony/swiftmailer-bundle": "^3.2",
     "symfony/templating": "4.4.*",
     "symfony/twig-bundle": "4.4.*",
