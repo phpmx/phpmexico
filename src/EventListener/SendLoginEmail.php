@@ -4,7 +4,7 @@ namespace App\EventListener;
 
 use App\Entity\User;
 use Doctrine\Common\EventSubscriber;
-use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Twig\Environment;
 
