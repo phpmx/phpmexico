@@ -2,6 +2,7 @@
 
 namespace App\Tests\Functional\Command;
 
+use App\Entity\MeetupEvent;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -54,5 +55,15 @@ class GetLatestMeetupEventCommandTest extends KernelTestCase
             'Cached event was updated successfully',
             $output
         );
+
+        // TODO: Search the best way to delete after test.
+        $doctrine = $this->bootKernel()->getContainer()->get('doctrine');
+        $om = $doctrine->getRepository(MeetupEvent::class);
+        $meetup = $om->findOneBy([
+            'meetupId' => 123456,
+        ]);
+
+        $doctrine->getManager()->remove($meetup);
+        $doctrine->getManager()->flush();
     }
 }
