@@ -1,5 +1,5 @@
 
-version: '3'
+version: '3.7'
 
 services:
   web:
@@ -17,7 +17,6 @@ services:
       - redis
     volumes:
       - ./:/var/www/html
-      - ./resources/php/devops.dev.conf:/etc/apache2/sites-available/000-default.conf
   redis:
     image: redis:5.0-alpine
   db:

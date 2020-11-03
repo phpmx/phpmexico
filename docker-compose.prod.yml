@@ -1,4 +1,5 @@
-version: '3'
+
+version: '3.7'
 
 networks:
   proxy:
@@ -17,12 +18,7 @@ services:
       - APP_DEBUG=0
       - WEB_ROOT=public
     labels:
-      - traefik.backend=phpmx_site
-      - traefik.docker.network=proxy
-      - "traefik.frontend.rule=Host:phpmexico.mx,www.phpmexico.mx"
-      - traefik.enable=true
-      - traefik.port=80
-      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.http.routers.whoami.rule=Host(`tres.phpmexico.mx`)"
     networks:
       - internal
       - proxy
