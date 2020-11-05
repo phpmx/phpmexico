@@ -34,3 +34,30 @@ easy_admin:
                     - username
                     - email
                     - profile
+        sponsor:
+            class: App\Entity\Sponsor
+            label: 'Sponsor'
+            list:
+                fields:
+                    - id
+                    - name
+                    - contact_name
+                    - email
+                    - { property: 'image', type: 'image', base_path: '%app.path.sponsor_images%' }
+            show:
+                fields:
+                    - id
+                    - name
+                    - contact_name
+                    - email
+                    - description
+                    - { property: 'image', type: 'image', base_path: '%app.path.sponsor_images%' }
+                    - created_at
+                    - updated_at
+            form:
+                fields:
+                    - name
+                    - contact_name
+                    - email
+                    - description
+                    - { property: 'imageFile', type: 'vich_image' }
