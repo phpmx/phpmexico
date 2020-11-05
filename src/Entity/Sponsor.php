@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use Symfony\Component\HttpFoundation\File\File;
 use App\Repository\SponsorRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use \DateTimeImmutable;
 
 /**
  * @ORM\Entity(repositoryClass=SponsorRepository::class)
@@ -43,7 +43,6 @@ class Sponsor
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     private $image;
 
