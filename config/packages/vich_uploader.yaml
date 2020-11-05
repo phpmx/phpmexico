@@ -2,6 +2,6 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-        sponsors:
-            uri_prefix: /images/sponsors
-            upload_destination: '%kernel.project_dir%/public/images/sponsors'
+        sponsor_images:
+            uri_prefix: '%app.path.sponsor_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.sponsor_images%'
