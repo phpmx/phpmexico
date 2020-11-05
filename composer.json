@@ -37,6 +37,7 @@
     "symfony/web-link": "4.4.*",
     "symfony/webpack-encore-bundle": "^1.6",
     "symfony/yaml": "4.4.*",
+    "vich/uploader-bundle": "^1.15",
     "wrapi/slack": "^1.0"
   },
     "config": {
