@@ -10,6 +10,7 @@ parameters:
     SLACK_TEAMID: '%env(SLACK_TEAMID)%'
     google_recaptcha_site_key: '%env(GOOGLE_RECAPTCHA_SITE_KEY)%'
     meetup_events_url: '%env(MEETUP_EVENTS_URL)%'
+    app.path.sponsor_images: /uploads/sponsors
 
 services:
     # default configuration for services in *this* file
