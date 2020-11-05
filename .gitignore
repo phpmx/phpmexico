@@ -32,3 +32,4 @@ yarn-error.log
 .idea/
 ###< env/ide ###
 
+public/uploads/
