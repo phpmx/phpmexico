@@ -12,8 +12,7 @@ Windows, OS X & Linux::
 ```sh
 docker-compose up -d
 docker-compose exec -u web web bash
-composer install
-./bin/console doctrine:migra:migra
+php bin/console doctrine:migra:migra
 ```
 
 - Build assets
