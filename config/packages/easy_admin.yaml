@@ -80,6 +80,9 @@ easy_admin:
                     - url
                     - { property: 'imageFile', type: 'vich_image' }
                     - linkedinUrl
+                    - gitUrl
+                    - twitterUrl
+                    - facebookUrl
                     - slideUrl
             list:
                 fields:
