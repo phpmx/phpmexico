@@ -5,3 +5,6 @@ vich_uploader:
         sponsor_images:
             uri_prefix: '%app.path.sponsor_images%'
             upload_destination: '%kernel.project_dir%/public%app.path.sponsor_images%'
+        meetup_images:
+            uri_prefix: '%app.path.meetup_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.meetup_images%'
