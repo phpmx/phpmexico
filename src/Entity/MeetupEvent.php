@@ -272,7 +272,7 @@ class MeetupEvent
 
         return $this;
     }
-    
+
     public function getGitUrl(): ?string
     {
         return $this->gitUrl;
