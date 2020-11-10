@@ -1,4 +1,8 @@
 easy_admin:
+    design:
+        form_theme:
+            - '@EasyAdmin/form/bootstrap_4.html.twig'
+            - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
     entities:
         job:
             class: App\Entity\Job
@@ -70,7 +74,7 @@ easy_admin:
                     - scheduledAt
                     - title
                     - place
-                    - description
+                    - { property: 'description', type: 'fos_ckeditor' }
                     - attendingCount
                     - speaker
                     - url
