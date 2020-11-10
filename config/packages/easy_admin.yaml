@@ -61,3 +61,26 @@ easy_admin:
                     - email
                     - description
                     - { property: 'imageFile', type: 'vich_image' }
+        meetup:
+            class: App\Entity\MeetupEvent
+            label: 'Meetup Events'
+            form:
+                fields:
+                    - meetupId
+                    - scheduledAt
+                    - title
+                    - place
+                    - description
+                    - attendingCount
+                    - speaker
+                    - url
+                    - { property: 'imageFile', type: 'vich_image' }
+                    - linkedinUrl
+                    - slideUrl
+            list:
+                fields:
+                    - id
+                    - scheduledAt
+                    - title
+                    - speaker
+                    - { property: 'image', type: 'image', base_path: '%app.path.meetup_images%' }
