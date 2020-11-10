@@ -80,6 +80,21 @@ class MeetupEvent
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $gitUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $twitterUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $facebookUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $slideUrl;
 
     /**
@@ -249,6 +264,42 @@ class MeetupEvent
     public function getLinkedinUrl(): ?string
     {
         return $this->linkedinUrl;
+    }
+
+    public function setGitUrl(?string $gitUrl): self
+    {
+        $this->gitUrl = $gitUrl;
+
+        return $this;
+    }
+    
+    public function getGitUrl(): ?string
+    {
+        return $this->gitUrl;
+    }
+
+    public function setTwitterUrl(?string $twitterUrl): self
+    {
+        $this->twitterUrl = $twitterUrl;
+
+        return $this;
+    }
+
+    public function getTwitterUrl(): ?string
+    {
+        return $this->twitterUrl;
+    }
+
+    public function setFacebookUrl(?string $facebookUrl): self
+    {
+        $this->facebookUrl = $facebookUrl;
+
+        return $this;
+    }
+
+    public function getFacebookUrl(): ?string
+    {
+        return $this->facebookUrl;
     }
 
     public function setSlideUrl(?string $slideUrl): self
