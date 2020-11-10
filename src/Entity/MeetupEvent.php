@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MeetupEventRepository;
-use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -242,6 +242,7 @@ class MeetupEvent
     public function setLinkedinUrl(?string $linkedinUrl): self
     {
         $this->linkedinUrl = $linkedinUrl;
+
         return $this;
     }
 
@@ -253,6 +254,7 @@ class MeetupEvent
     public function setSlideUrl(?string $slideUrl): self
     {
         $this->slideUrl = $slideUrl;
+
         return $this;
     }
 
