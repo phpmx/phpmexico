@@ -70,23 +70,25 @@ easy_admin:
             label: 'Meetup Events'
             form:
                 fields:
+                    - { type: 'section', label: 'Información General' }
                     - meetupId
-                    - scheduledAt
-                    - title
-                    - place
-                    - { property: 'description', type: 'fos_ckeditor' }
-                    - attendingCount
-                    - speaker
-                    - url
-                    - { property: 'imageFile', type: 'vich_image' }
-                    - youtubeUrl
-                    - twitterUrl
-                    - facebookUrl
-                    - slideUrl
-                    - speakerLinkedinUrl
-                    - speakerGitUrl
-                    - speakerTwitterUrl
-                    - speakerFacebookUrl
+                    - { property: 'scheduledAt', label: 'Fecha' }
+                    - { property: 'title', label: 'Título' }
+                    - { property: 'place', label: 'Lugar' }
+                    - { property: 'description', type: 'fos_ckeditor', label: 'Descripción'}
+                    - { property: 'attendingCount', label: 'Num. participantes'}
+                    - { property: 'url', label: 'Url Meetup.com' }
+                    - { property: 'imageFile', type: 'vich_image', label: 'Imagen de Portada'}
+                    - { property: 'youtubeUrl', label: 'Url Youtube' }
+                    - { property: 'twitterUrl', label: 'Url Twitter' }
+                    - { property: 'facebookUrl', label: 'Url Facebook' }
+                    - { property: 'slideUrl', label: 'Url Diapositivas' }
+                    - { type: 'section', label: 'Información de Ponente' }
+                    - { property: 'speaker', label: 'Ponente' }
+                    - { property: 'speakerLinkedinUrl', label: 'Url Linkedin' }
+                    - { property: 'speakerGitUrl', label: 'Url Git Personal' }
+                    - { property: 'speakerTwitterUrl', label: 'Url Twitter' }
+                    - { property: 'speakerFacebookUrl', label: 'Url Facebook' }
             list:
                 fields:
                     - id
