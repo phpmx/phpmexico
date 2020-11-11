@@ -79,11 +79,14 @@ easy_admin:
                     - speaker
                     - url
                     - { property: 'imageFile', type: 'vich_image' }
-                    - linkedinUrl
-                    - gitUrl
+                    - youtubeUrl
                     - twitterUrl
                     - facebookUrl
                     - slideUrl
+                    - speakerLinkedinUrl
+                    - speakerGitUrl
+                    - speakerTwitterUrl
+                    - speakerFacebookUrl
             list:
                 fields:
                     - id
