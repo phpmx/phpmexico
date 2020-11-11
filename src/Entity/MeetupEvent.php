@@ -75,12 +75,7 @@ class MeetupEvent
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $linkedinUrl;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $gitUrl;
+    private $youtubeUrl;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -96,6 +91,26 @@ class MeetupEvent
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $slideUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $speakerLinkedinUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $speakerGitUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $speakerTwitterUrl;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $speakerFacebookUrl;
 
     /**
      * @ORM\Column(type="datetime", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -254,28 +269,40 @@ class MeetupEvent
         return $this->imageFile;
     }
 
-    public function setLinkedinUrl(?string $linkedinUrl): self
+    public function setYoutubeUrl(?string $youtubeUrl): self
     {
-        $this->linkedinUrl = $linkedinUrl;
+        $this->youtubeUrl = $youtubeUrl;
 
         return $this;
     }
 
-    public function getLinkedinUrl(): ?string
+    public function getYoutubeUrl(): ?string
     {
-        return $this->linkedinUrl;
+        return $this->youtubeUrl;
     }
 
-    public function setGitUrl(?string $gitUrl): self
+    public function setSpeakerLinkedinUrl(?string $linkedinUrl): self
     {
-        $this->gitUrl = $gitUrl;
+        $this->speakerLinkedinUrl = $linkedinUrl;
 
         return $this;
     }
 
-    public function getGitUrl(): ?string
+    public function getSpeakerLinkedinUrl(): ?string
     {
-        return $this->gitUrl;
+        return $this->speakerLinkedinUrl;
+    }
+
+    public function setSpeakerGitUrl(?string $gitUrl): self
+    {
+        $this->speakerGitUrl = $gitUrl;
+
+        return $this;
+    }
+
+    public function getSpeakerGitUrl(): ?string
+    {
+        return $this->speakerGitUrl;
     }
 
     public function setTwitterUrl(?string $twitterUrl): self
@@ -312,6 +339,30 @@ class MeetupEvent
     public function getSlideUrl(): ?string
     {
         return $this->slideUrl;
+    }
+
+    public function setSpeakerTwitterUrl(?string $speakerTwitterUrl): self
+    {
+        $this->speakerTwitterUrl = $speakerTwitterUrl;
+
+        return $this;
+    }
+
+    public function getSpeakerTwitterUrl(): ?string
+    {
+        return $this->speakerTwitterUrl;
+    }
+
+    public function setSpeakerFacebookUrl(?string $speakerFacebookUrl): self
+    {
+        $this->speakerFacebookUrl = $speakerFacebookUrl;
+
+        return $this;
+    }
+
+    public function getSpeakerFacebookUrl(): ?string
+    {
+        return $this->speakerFacebookUrl;
     }
 
     public function setCreatedAt(DateTimeInterface $createdAt): self
