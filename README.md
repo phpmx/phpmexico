@@ -12,6 +12,7 @@ Windows, OS X & Linux::
 ```sh
 docker-compose up -d
 docker-compose exec -u web web bash
+composer install
 php bin/console doctrine:migra:migra
 ```
 
