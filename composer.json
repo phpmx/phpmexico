@@ -89,7 +89,9 @@
         }
     },
     "require-dev": {
+    "doctrine/doctrine-fixtures-bundle": "^3.3",
     "friendsofphp/php-cs-fixer": "^2.16",
+    "hautelook/alice-bundle": "^2.8",
     "symfony/browser-kit": "4.4.*",
     "symfony/css-selector": "4.4.*",
     "symfony/debug-pack": "^1.0",
