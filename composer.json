@@ -21,6 +21,7 @@
     "presta/sitemap-bundle": "^1.7",
     "sensio/framework-extra-bundle": "^5.3",
     "snc/redis-bundle": "^2.1",
+    "stof/doctrine-extensions-bundle": "^1.5",
     "symfony/cache": "4.4.*",
     "symfony/config": "4.4.*",
     "symfony/console": "4.4.*",
