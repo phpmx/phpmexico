@@ -2,18 +2,17 @@ name: PHP Mexico Pipeline
 
 on:
   push:
-    branches: [ master]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
       matrix:
-        php-versions: ['7.3']
+        php-version: ["7.3"]
         node-version: [12.x]
 
     services:
@@ -29,49 +28,54 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: install dependencies
-      run: yarn --frozen-lockfile
+      - name: Use PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@2.9.0
+        with:
+          php-version: ${{ matrix.php-version }}
 
-    - name: Build assets
-      run: yarn build
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install dependencies
+        run: yarn --frozen-lockfile
 
-    - name: Start mysql service
-      run: sudo /etc/init.d/mysql start
+      - name: Build assets
+        run: yarn build
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+      - name: Start mysql service
+        run: sudo /etc/init.d/mysql start
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      - name: Validate composer.json and composer.lock
+        run: composer validate
 
-    - name: migrations
-      run: ./bin/console doctrine:migration:migrate --no-interaction --env=test
-      env:
-        DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: php code style
-      run:  ./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run
+      - name: migrations
+        run: ./bin/console doctrine:migration:migrate --no-interaction --env=test
+        env:
+          DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
 
-    - name: run test
-      run: ./bin/phpunit
-      env:
-        DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
+      - name: php code style
+        run: ./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run
 
-    - name: Notify to Slack
-      uses: innocarpe/actions-slack@v1
-      with:
-        status: ${{ job.status }}
-        success_text: '😎 Wow! Tenemos un nuevo cambio para el sitio de phpmexico 🚀 '
-        failure_text: '😣 Ouch! Algo va mal con los nuevos cambios ❌ '
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      - name: run test
+        run: ./bin/phpunit
+        env:
+          DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
+
+      - name: Notify to Slack
+        uses: innocarpe/actions-slack@v1
+        with:
+          status: ${{ job.status }}
+          success_text: "😎 Wow! Tenemos un nuevo cambio para el sitio de phpmexico 🚀 "
+          failure_text: "😣 Ouch! Algo va mal con los nuevos cambios ❌ "
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
