@@ -2,26 +2,31 @@
 version: '3.7'
 
 networks:
-  proxy:
-    external:
-      name: proxy
+  web:
+    name: web
   internal:
     driver: bridge
     external: false
 
 services:
   web:
-    ports: []
+    restart: always
+    ports:
+      - "80"
     environment:
       - APACHE_RUN_USER=web
       - APP_ENV=prod
       - APP_DEBUG=0
       - WEB_ROOT=public
     labels:
-      - "traefik.http.routers.whoami.rule=Host(`tres.phpmexico.mx`)"
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.phpmxweb.entrypoints=websecure"
+      - "traefik.http.routers.phpmxweb.tls.certresolver=phpmx"
+      - "traefik.http.routers.phpmxweb.rule=Host(`www.phpmexico.mx`, `phpmexico.mx`)"
     networks:
       - internal
-      - proxy
+      - web
 
   redis:
     networks:
