@@ -4,8 +4,6 @@ version: '3.7'
 services:
   web:
     image: indava/php:7.3
-    ports:
-      - "8080:80"
     environment:
       - XDEBUG_CONFIG="remote_host=172.17.0.1"
       - APACHE_RUN_USER=web
