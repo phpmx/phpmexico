@@ -13,6 +13,7 @@
     "friendsofsymfony/ckeditor-bundle": "^2.2",
     "google/recaptcha": "^1.2",
     "gravatarphp/gravatar": "^2.0",
+    "http-interop/http-factory-guzzle": "*",
     "jaybizzle/crawler-detect": "^1.2",
     "mattketmo/email-checker": "^1.5",
     "php-http/guzzle6-adapter": "^2.0",
@@ -27,7 +28,7 @@
     "symfony/console": "4.4.*",
     "symfony/dom-crawler": "4.4.*",
     "symfony/dotenv": "4.4.*",
-    "symfony/flex": "^1.1",
+    "symfony/flex": "^v1.22.0",
     "symfony/framework-bundle": "4.4.*",
     "symfony/mercure-bundle": "^0.1.1",
     "symfony/monolog-bundle": "^3.4",
@@ -45,7 +46,11 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "symfony/flex": true
+        }
     },
     "autoload": {
         "psr-4": {
@@ -92,7 +97,7 @@
     "require-dev": {
     "doctrine/doctrine-fixtures-bundle": "^3.3",
     "friendsofphp/php-cs-fixer": "^2.16",
-    "hautelook/alice-bundle": "^2.8",
+    "hautelook/alice-bundle": "*",
     "symfony/browser-kit": "4.4.*",
     "symfony/css-selector": "4.4.*",
     "symfony/debug-pack": "^1.0",
