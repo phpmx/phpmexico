@@ -67,13 +67,6 @@ jobs:
         env:
           DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
 
-      - name: Notify to Slack
-        uses: slackapi/slack-github-action@v2.1.1
-        with:
-          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
-          payload: |
-            text: ${{ job.status == 'success' && '😎 Wow! Tenemos un nuevo cambio para el sitio de phpmexico 🚀 ' || '😣 Ouch! Algo va mal con los nuevos cambios ❌ ' }}
-
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
