@@ -67,16 +67,6 @@ jobs:
         env:
           DATABASE_URL: mysql://root:toor@127.0.0.1:${{ job.services.mysql.ports['3306'] }}/phpmx
 
-      - name: Notify to Slack
-        uses: innocarpe/actions-slack@v1
-        with:
-          status: ${{ job.status }}
-          success_text: "😎 Wow! Tenemos un nuevo cambio para el sitio de phpmexico 🚀 "
-          failure_text: "😣 Ouch! Algo va mal con los nuevos cambios ❌ "
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 

@@ -33,6 +33,6 @@ class CrawlNode
             ]);
         }
 
-        return  $default;
+        return $default;
     }
 }
