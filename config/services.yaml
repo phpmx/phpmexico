@@ -57,8 +57,10 @@ services:
             - { name: doctrine.event_subscriber, event: postPersist }
 
     snc_second_level_cache:
-        class: '%snc_redis.doctrine_cache_predis.class%'
-        arguments: [ '@snc_redis.default' ]
+        class: Symfony\Component\Cache\DoctrineProvider
+        public: false
+        arguments:
+            - '@doctrine.second_level_cache_pool'
 
     app.redis_provider:
         class: \Redis
