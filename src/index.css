@@ -118,4 +118,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Container padding and centering */
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
