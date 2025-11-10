@@ -16,7 +16,9 @@ const router = createBrowserRouter([
       { path: '/eventos', element: <Events /> },
     ],
   },
-])
+], {
+  basename: '/phpmexico',
+})
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
