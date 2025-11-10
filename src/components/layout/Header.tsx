@@ -17,7 +17,7 @@ const navLinks = [
 
 const chatLink = {
   href: 'https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ',
-  label: 'Entrar / Unirme',
+  label: 'Unirme',
 }
 
 export default function Header() {

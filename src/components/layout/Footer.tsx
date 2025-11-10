@@ -29,7 +29,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Entar / Unirme
+                Unirme
               </a>
             </li>
           </ul>
