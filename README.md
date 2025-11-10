@@ -1,73 +1,92 @@
-# React + TypeScript + Vite
+# PHP México
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+PHP México Community website - The largest PHP community in Mexico.
 
-Currently, two official plugins are available:
+## Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This is the official website for PHP México, a community of PHP developers across Mexico. The site provides:
 
-## React Compiler
+- Community information and resources
+- Event listings and videos from past meetups
+- FAQ section for new members
+- Technology showcase
+- Social media integration
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Built with React, TypeScript, Vite, and Tailwind CSS.
 
-## Expanding the ESLint configuration
+## Development Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+ 
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone https://github.com/Sirpyerre/phpmexico.git
+cd phpmexico
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+npm install
 ```
+
+3. Create a `.env.local` file in the root directory:
+```bash
+VITE_YOUTUBE_API_KEY=your_youtube_api_key_here
+VITE_YOUTUBE_CHANNEL_ID=UCwQwULU2DdB6BkfBqLpQaKA
+```
+
+4. Start the development server:
+```bash
+npm run dev
+```
+
+5. Open your browser at `http://localhost:5173`
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## Contributing
+
+We welcome contributions from the community! Here's how you can help:
+
+### Reporting Issues
+
+- Use the GitHub issue tracker
+- Provide clear description and steps to reproduce
+- Include screenshots if applicable
+
+### Pull Requests
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Code Guidelines
+
+- Follow the existing code style
+- Write meaningful commit messages
+- Test your changes before submitting
+- Update documentation as needed
+
+## Community
+
+- **Slack**: [Join our chat](https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ)
+- **Meetup**: [PHP The Right Way](https://www.meetup.com/es-ES/PHP-The-Right-Way/)
+- **Twitter**: [@phpmx](https://twitter.com/phpmx)
+- **YouTube**: [@phpmexico](https://www.youtube.com/@phpmexico)
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
