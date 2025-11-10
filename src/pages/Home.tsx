@@ -14,7 +14,6 @@ import {
   Slack,
 } from 'lucide-react'
 
-// --- Componente Hero ---
 const HeroSection = () => (
   <section className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-12 text-center md:py-20">
     <div className="container mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
@@ -71,7 +70,6 @@ const HeroSection = () => (
   </section>
 )
 
-// --- Componente de Tecnologías ---
 const techList = [
   { name: 'Symfony', logo: '/logos/symfony.svg' },
   { name: 'Laravel', logo: '/logos/laravel.svg' },
@@ -116,7 +114,6 @@ const TechnologiesSection = () => (
   </section>
 )
 
-// --- Componente de FAQ ---
 const faqItems = [
   {
     q: '¿Cómo puedo contribuir a la comunidad PHP México?',
@@ -168,7 +165,7 @@ const FaqSection = () => (
   </section>
 )
 
-// --- Página Principal ---
+// --- Main page ---
 export default function Home() {
   return (
     <>
