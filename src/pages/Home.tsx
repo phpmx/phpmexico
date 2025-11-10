@@ -11,7 +11,6 @@ import {
   Facebook,
   Instagram,
   Youtube,
-  Slack,
 } from 'lucide-react'
 
 const urlBase = import.meta.env.BASE_URL;

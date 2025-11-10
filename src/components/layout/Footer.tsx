@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Twitter, Facebook, Instagram, Slack, Youtube, Calendar } from 'lucide-react'
+import { Twitter, Facebook, Instagram, Youtube, Calendar } from 'lucide-react'
 
 export default function Footer() {
   return (
