@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { Twitter, Facebook, Instagram, Github, Slack } from 'lucide-react'
+import { Twitter, Facebook, Instagram, Slack, Youtube, Calendar } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -16,12 +16,6 @@ export default function Footer() {
           <h4 className="mb-2 font-semibold">Comunidad</h4>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link to="/" className="text-muted-foreground hover:text-foreground">
-                Empresas
-              </Link>
-            </li>
-            {/* Link a "Bolsa de Trabajo" eliminado */}
-            <li>
               <Link
                 to="/eventos"
                 className="text-muted-foreground hover:text-foreground"
@@ -31,7 +25,9 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="#" // TODO: Añadir link de Slack
+                href="https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground"
               >
                 Chat (Slack)
@@ -61,31 +57,41 @@ export default function Footer() {
         </div>
         <div>
           <h4 className="mb-2 font-semibold">Síguenos</h4>
-          <div className="flex space-x-2">
+          <div className="flex flex-wrap gap-2">
             <Button variant="outline" size="icon" asChild>
-              <a href="#"> {/* TODO: Link Twitter */}
-                <Twitter className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <a href="#"> {/* TODO: Link Facebook */}
-                <Facebook className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <a href="#"> {/* TODO: Link Instagram */}
-                <Instagram className="h-4 w-4" />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <a href="#"> {/* TODO: Link Github */}
-                <Github className="h-4 w-4" />
-              </a>
-            </Button>
-            {/* Logo de Slack añadido como solicitaste */}
-            <Button variant="outline" size="icon" asChild>
-              <a href="#"> {/* TODO: Link Slack */}
+              <a href="https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ" target="_blank" rel="noopener noreferrer">
                 <Slack className="h-4 w-4" />
+                <span className="sr-only">Slack</span>
+              </a>
+            </Button>
+            <Button variant="outline" size="icon" asChild>
+              <a href="https://twitter.com/phpmx" target="_blank" rel="noopener noreferrer">
+                <Twitter className="h-4 w-4" />
+                <span className="sr-only">Twitter</span>
+              </a>
+            </Button>
+            <Button variant="outline" size="icon" asChild>
+              <a href="https://www.facebook.com/phpmexico" target="_blank" rel="noopener noreferrer">
+                <Facebook className="h-4 w-4" />
+                <span className="sr-only">Facebook</span>
+              </a>
+            </Button>
+            <Button variant="outline" size="icon" asChild>
+              <a href="https://www.instagram.com/phpmx/" target="_blank" rel="noopener noreferrer">
+                <Instagram className="h-4 w-4" />
+                <span className="sr-only">Instagram</span>
+              </a>
+            </Button>
+            <Button variant="outline" size="icon" asChild>
+              <a href="https://www.youtube.com/@phpmexico" target="_blank" rel="noopener noreferrer">
+                <Youtube className="h-4 w-4" />
+                <span className="sr-only">YouTube</span>
+              </a>
+            </Button>
+            <Button variant="outline" size="icon" asChild>
+              <a href="https://www.meetup.com/es-ES/PHP-The-Right-Way/" target="_blank" rel="noopener noreferrer">
+                <Calendar className="h-4 w-4" />
+                <span className="sr-only">Meetup</span>
               </a>
             </Button>
           </div>

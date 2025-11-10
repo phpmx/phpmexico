@@ -12,6 +12,7 @@ import { Menu } from 'lucide-react'
 
 const navLinks = [
   { href: '/', label: 'Comunidad' },
+  { href: 'https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ', label: 'Chat' },
   { href: '/eventos', label: 'Eventos' },
 ]
 

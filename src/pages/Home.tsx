@@ -10,8 +10,9 @@ import {
 import {
   Twitter,
   Facebook,
-  Slack,
   Instagram,
+  Youtube,
+  Slack,
   Code,
   Database,
   Server,
@@ -19,7 +20,6 @@ import {
   Layers,
   ShoppingBag,
   Component,
-  Replace, // Placeholder genérico
 } from 'lucide-react'
 
 // --- Componente Hero ---
@@ -27,11 +27,14 @@ const HeroSection = () => (
   <section className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-12 text-center md:py-20">
     <div className="container mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
       <div className="mb-8 flex justify-center">
-        {/* REEMPLAZAR: 
-          Usa tu propio <img /> o componente SVG para el logo del elefante.
-          La imagen que adjuntaste (image_22b60b.png) es una captura de pantalla.
-        */}
-        <Replace size={128} strokeWidth={0.5} className="text-blue-500" />
+        <img 
+          src="/logo.png" 
+          srcSet="/logo.png 1x, /logo@2x.png 2x, /logo@3x.png 3x"
+          alt="PHP Mexico Logo" 
+          className="h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56"
+          width="224"
+          height="224"
+        />
       </div>
       <h1 className="mb-4 text-4xl font-bold md:text-6xl">
         La comunidad de PHP en México
@@ -40,25 +43,35 @@ const HeroSection = () => (
         Conéctate con desarrolladores de todo el país
       </p>
       <div className="flex justify-center space-x-4">
-        <Button variant="outline" size="icon" asChild>
-          <a href="#"> {/* TODO: Link Twitter */}
-            <Twitter className="h-5 w-5" />
-          </a>
-        </Button>
-        <Button variant="outline" size="icon" asChild>
-          <a href="#"> {/* TODO: Link Facebook */}
-            <Facebook className="h-5 w-5" />
-          </a>
-        </Button>
-        {/* Logo de Slack añadido como solicitaste */}
-        <Button variant="outline" size="icon" asChild>
-          <a href="#"> {/* TODO: Link Slack */}
+         <Button variant="outline" size="icon" asChild>
+          <a href="https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ" target="_blank" rel="noopener noreferrer">
             <Slack className="h-5 w-5" />
+            <span className="sr-only">Slack</span>
+          </a>
+        </Button>
+        
+        <Button variant="outline" size="icon" asChild>
+          <a href="https://twitter.com/phpmx" target="_blank" rel="noopener noreferrer">
+            <Twitter className="h-5 w-5" />
+            <span className="sr-only">Twitter</span>
           </a>
         </Button>
         <Button variant="outline" size="icon" asChild>
-          <a href="#"> {/* TODO: Link Instagram */}
+          <a href="https://www.facebook.com/pehacheperos" target="_blank" rel="noopener noreferrer">
+            <Facebook className="h-5 w-5" />
+            <span className="sr-only">Facebook</span>
+          </a>
+        </Button>
+        <Button variant="outline" size="icon" asChild>
+          <a href="https://www.instagram.com/phpmx/" target="_blank" rel="noopener noreferrer">
             <Instagram className="h-5 w-5" />
+            <span className="sr-only">Instagram</span>
+          </a>
+        </Button>
+        <Button variant="outline" size="icon" asChild>
+          <a href="https://www.youtube.com/@phpmexico" target="_blank" rel="noopener noreferrer">
+            <Youtube className="h-5 w-5" />
+            <span className="sr-only">YouTube</span>
           </a>
         </Button>
       </div>

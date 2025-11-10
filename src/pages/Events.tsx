@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { ExternalLink, Youtube, Loader2 } from 'lucide-react'
+import { ExternalLink, Youtube, Loader2, Calendar, Users } from 'lucide-react'
 
 interface YouTubeVideo {
   id: string
@@ -22,7 +22,7 @@ export default function Events() {
       try {
         const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY
         const CHANNEL_ID = import.meta.env.VITE_YOUTUBE_CHANNEL_ID
-
+        console.log('Using YouTube API Key:', API_KEY)
         if (!API_KEY || API_KEY === 'YOUR_API_KEY_HERE') {
           setError('YouTube API key no configurada')
           setLoading(false)
@@ -65,10 +65,38 @@ export default function Events() {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      {/* Banner de invitación a Meetup */}
+      <div className="mb-12 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-background border border-primary/20">
+        <div className="flex flex-col items-center gap-6 p-8 text-center md:flex-row md:text-left">
+          <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary/10">
+            <Calendar className="h-10 w-10 text-primary" />
+          </div>
+          <div className="flex-1">
+            <h2 className="mb-2 text-2xl font-bold">¡Únete a nuestros eventos!</h2>
+            <p className="mb-4 text-muted-foreground">
+              Participa en charlas, talleres y networking con la comunidad PHP más grande de México. 
+              Mantente al tanto de los próximos eventos presenciales y virtuales.
+            </p>
+            <Button size="lg" asChild>
+              <a
+                href="https://www.meetup.com/es-ES/PHP-The-Right-Way/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2"
+              >
+                <Users className="h-5 w-5" />
+                Ver próximos eventos en Meetup
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+
       <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold">Eventos y Videos</h1>
+        <h1 className="mb-2 text-3xl font-bold">Videos de Eventos Anteriores</h1>
         <p className="text-muted-foreground">
-          Mira las grabaciones de nuestros eventos y charlas
+          Revive las mejores charlas y talleres de nuestra comunidad
         </p>
         <Button variant="outline" className="mt-4" asChild>
           <a
