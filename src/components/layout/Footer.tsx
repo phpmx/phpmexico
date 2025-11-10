@@ -28,9 +28,8 @@ export default function Footer() {
                 href="https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground"
               >
-                Chat (Slack)
+                Entar / Unirme
               </a>
             </li>
           </ul>
@@ -56,12 +55,6 @@ export default function Footer() {
         <div>
           <h4 className="mb-2 font-semibold">Síguenos</h4>
           <div className="flex flex-wrap gap-2">
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ" target="_blank" rel="noopener noreferrer">
-                <Slack className="h-4 w-4" />
-                <span className="sr-only">Slack</span>
-              </a>
-            </Button>
             <Button variant="outline" size="icon" asChild>
               <a href="https://twitter.com/phpmx" target="_blank" rel="noopener noreferrer">
                 <Twitter className="h-4 w-4" />

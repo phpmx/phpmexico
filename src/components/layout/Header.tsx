@@ -11,10 +11,14 @@ import {
 import { Menu } from 'lucide-react'
 
 const navLinks = [
-  { href: '/', label: 'Comunidad' },
-  { href: 'https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ', label: 'Chat' },
-  { href: '/eventos', label: 'Eventos' },
+  { href: '/', label: 'Comunidad', isButton: false },
+  { href: '/eventos', label: 'Eventos', isButton: false },
 ]
+
+const chatLink = {
+  href: 'https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ',
+  label: 'Entrar / Unirme',
+}
 
 export default function Header() {
   return (
@@ -39,6 +43,14 @@ export default function Header() {
         </nav>
 
         <div className="flex-1" />
+
+        <div className="hidden md:flex items-center gap-4">
+          <Button asChild>
+            <a href={chatLink.href} target="_blank" rel="noopener noreferrer">
+              {chatLink.label}
+            </a>
+          </Button>
+        </div>
 
         <div className="md:hidden">
           <Sheet>
@@ -68,6 +80,14 @@ export default function Header() {
                     </Link>
                   </SheetClose>
                 ))}
+                
+                <SheetClose asChild>
+                  <Button asChild className="w-full">
+                    <a href={chatLink.href} target="_blank" rel="noopener noreferrer">
+                      {chatLink.label}
+                    </a>
+                  </Button>
+                </SheetClose>
               </nav>
             </SheetContent>
           </Sheet>

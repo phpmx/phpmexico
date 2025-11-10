@@ -36,13 +36,6 @@ const HeroSection = () => (
         Conéctate con desarrolladores de todo el país
       </p>
       <div className="flex justify-center space-x-4">
-         <Button variant="outline" size="icon" asChild>
-          <a href="https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ" target="_blank" rel="noopener noreferrer">
-            <Slack className="h-5 w-5" />
-            <span className="sr-only">Slack</span>
-          </a>
-        </Button>
-        
         <Button variant="outline" size="icon" asChild>
           <a href="https://twitter.com/phpmx" target="_blank" rel="noopener noreferrer">
             <Twitter className="h-5 w-5" />
@@ -81,7 +74,7 @@ const techList = [
   { name: 'Laminas', logo: `${urlBase}logos/laminas-wordmark.svg` },
   { name: 'Sass', logo: `${urlBase}logos/sass.svg` },
   { name: 'ReactJs', logo: `${urlBase}logos/react.svg` },
-  { name: 'AngularJs', logo: `${urlBase}logos/angular.svg` },
+  { name: 'Angular', logo: `${urlBase}logos/angular.svg` },
   { name: 'MySQL', logo: `${urlBase}logos/mysql.svg` },
   { name: 'PostgreSQL', logo: `${urlBase}logos/postgresql.svg` },
   { name: 'Oracle', logo: `${urlBase}logos/oracle.svg` },
