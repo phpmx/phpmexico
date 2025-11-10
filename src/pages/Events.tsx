@@ -65,7 +65,6 @@ export default function Events() {
 
   return (
     <div className="container mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      {/* Banner de invitación a Meetup */}
       <div className="mb-12 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-background border border-primary/20">
         <div className="flex flex-col items-center gap-6 p-8 text-center md:flex-row md:text-left">
           <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-primary/10">

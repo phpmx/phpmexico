@@ -39,13 +39,11 @@ export default function Footer() {
           <h4 className="mb-2 font-semibold">Recursos</h4>
           <ul className="space-y-2 text-sm">
             <li>
-              {/* Link de anclaje a la sección FAQ en la Home */}
               <a href="/#faq" className="text-muted-foreground hover:text-foreground">
                 FAQ
               </a>
             </li>
             <li>
-              {/* Link de anclaje a la sección Tecnologías en la Home */}
               <a
                 href="/#tecnologias"
                 className="text-muted-foreground hover:text-foreground"
@@ -71,7 +69,7 @@ export default function Footer() {
               </a>
             </Button>
             <Button variant="outline" size="icon" asChild>
-              <a href="https://www.facebook.com/phpmexico" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/phpmx" target="_blank" rel="noopener noreferrer">
                 <Facebook className="h-4 w-4" />
                 <span className="sr-only">Facebook</span>
               </a>

@@ -4,10 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
 import './index.css'
 
-// Importar páginas
 import Home from './pages/Home'
 import Events from './pages/Events'
-// Ya no importamos Jobs, Login, ni Register
 
 const router = createBrowserRouter([
   {
@@ -16,7 +14,6 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/eventos', element: <Events /> },
-      // Rutas eliminadas para '/bolsa-de-trabajo', '/login', '/register'
     ],
   },
 ])

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import {
@@ -13,13 +12,6 @@ import {
   Instagram,
   Youtube,
   Slack,
-  Code,
-  Database,
-  Server,
-  Brush,
-  Layers,
-  ShoppingBag,
-  Component,
 } from 'lucide-react'
 
 // --- Componente Hero ---
@@ -57,7 +49,7 @@ const HeroSection = () => (
           </a>
         </Button>
         <Button variant="outline" size="icon" asChild>
-          <a href="https://www.facebook.com/pehacheperos" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.facebook.com/phpmx" target="_blank" rel="noopener noreferrer">
             <Facebook className="h-5 w-5" />
             <span className="sr-only">Facebook</span>
           </a>
@@ -81,22 +73,22 @@ const HeroSection = () => (
 
 // --- Componente de Tecnologías ---
 const techList = [
-  { name: 'Symfony', icon: <Code /> },
-  { name: 'Laravel', icon: <Code /> },
-  { name: 'Yii', icon: <Code /> },
-  { name: 'Slim', icon: <Code /> },
-  { name: 'ExpressJs', icon: <Code /> },
-  { name: 'Zend', icon: <Code /> },
-  { name: 'Sass', icon: <Brush /> },
-  { name: 'ReactJs', icon: <Component /> },
-  { name: 'AngularJs', icon: <Component /> },
-  { name: 'MySQL', icon: <Database /> },
-  { name: 'PostgreSQL', icon: <Database /> },
-  { name: 'Oracle', icon: <Database /> },
-  { name: 'SQL Server', icon: <Server /> },
-  { name: 'Drupal', icon: <Layers /> },
-  { name: 'WordPress', icon: <Layers /> },
-  { name: 'Magento', icon: <ShoppingBag /> },
+  { name: 'Symfony', logo: '/logos/symfony.svg' },
+  { name: 'Laravel', logo: '/logos/laravel.svg' },
+  { name: 'Yii', logo: '/logos/yii.svg' },
+  { name: 'Slim', logo: '/logos/slim.svg' },
+  { name: 'ExpressJs', logo: '/logos/express.svg' },
+  { name: 'Laminas', logo: '/logos/laminas-wordmark.svg' },
+  { name: 'Sass', logo: '/logos/sass.svg' },
+  { name: 'ReactJs', logo: '/logos/react.svg' },
+  { name: 'AngularJs', logo: '/logos/angular.svg' },
+  { name: 'MySQL', logo: '/logos/mysql.svg' },
+  { name: 'PostgreSQL', logo: '/logos/postgresql.svg' },
+  { name: 'Oracle', logo: '/logos/oracle.svg' },
+  { name: 'SQL Server', logo: '/logos/microsoftsqlserver.svg' },
+  { name: 'Drupal', logo: '/logos/drupal.svg' },
+  { name: 'WordPress', logo: '/logos/wordpress.svg' },
+  { name: 'Magento', logo: '/logos/magento.svg' },
 ]
 
 const TechnologiesSection = () => (
@@ -109,12 +101,12 @@ const TechnologiesSection = () => (
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-8">
         {techList.map((tech) => (
           <Card key={tech.name} className="flex flex-col items-center justify-center p-4 transition-all hover:shadow-lg">
-            {/* REEMPLAZAR: 
-              Este es un placeholder. Usa tu <img src="..." /> para cada logo.
-              La imagen que adjuntaste (image_22b68b.png) es una captura de pantalla.
-            */}
-            <div className="mb-2 text-muted-foreground grayscale transition-all hover:grayscale-0">
-              {React.cloneElement(tech.icon, { size: 32 })}
+            <div className="mb-2 h-12 w-12 grayscale transition-all hover:grayscale-0">
+              <img 
+                src={tech.logo} 
+                alt={`${tech.name} logo`}
+                className="h-full w-full object-contain"
+              />
             </div>
             <p className="text-sm font-medium">{tech.name}</p>
           </Card>
@@ -128,27 +120,27 @@ const TechnologiesSection = () => (
 const faqItems = [
   {
     q: '¿Cómo puedo contribuir a la comunidad PHP México?',
-    a: 'Puedes contribuir...',
+    a: 'Hay muchas formas de contribuir: participa en nuestros eventos y meetups, comparte tu conocimiento en el Slack, ayuda a otros desarrolladores con sus dudas, escribe artículos técnicos, o propón charlas para nuestros eventos. Toda contribución, grande o pequeña, es valiosa para la comunidad.',
   },
   {
     q: '¿Necesito ser un experto en PHP para unirme?',
-    a: 'No, todos son bienvenidos...',
+    a: '¡Para nada! La comunidad PHP México está abierta a desarrolladores de todos los niveles. Desde principiantes hasta expertos, todos son bienvenidos. Es un excelente lugar para aprender, hacer preguntas y crecer profesionalmente.',
   },
   {
     q: '¿Cómo puedo proponer una charla o taller?',
-    a: 'Ponte en contacto con los organizadores...',
+    a: 'Si tienes una idea para una charla o taller, puedes proponerla a través de nuestro Slack en el canal de eventos, o contactando directamente a los organizadores. Buscamos contenido técnico, casos de uso reales, y experiencias que puedan beneficiar a la comunidad.',
   },
   {
     q: '¿Hay oportunidades de networking y empleo?',
-    a: 'Sí, en nuestra bolsa de trabajo y eventos...',
+    a: 'Sí, la comunidad es un excelente lugar para hacer networking. Muchas empresas buscan talento PHP a través de nuestra red. Además, compartimos ofertas de trabajo en nuestros canales y durante los eventos. Es una gran oportunidad para conectar con otros profesionales y empresas.',
   },
   {
     q: '¿Cómo puedo mantenerme actualizado con los eventos?',
-    a: 'Síguenos en nuestras redes sociales...',
+    a: 'Únete a nuestro Slack para recibir notificaciones sobre próximos eventos, meetups y noticias de la comunidad. También publicamos actualizaciones en nuestras redes sociales (Twitter, Facebook, Instagram).',
   },
   {
     q: '¿Puedo organizar un evento local en mi ciudad?',
-    a: '¡Claro! Contáctanos para ayudarte...',
+    a: '¡Absolutamente! Fomentamos la creación de grupos locales en diferentes ciudades de México. Si quieres organizar un meetup o evento en tu ciudad, contáctanos a través del Slack y te ayudaremos con recursos, promoción y conexión con otros miembros locales.',
   },
 ]
 
@@ -166,7 +158,9 @@ const FaqSection = () => (
         {faqItems.map((item) => (
           <AccordionItem value={item.q} key={item.q}>
             <AccordionTrigger>{item.q}</AccordionTrigger>
-            <AccordionContent>{item.a}</AccordionContent>
+            <AccordionContent className="text-muted-foreground">
+              {item.a}
+            </AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>
