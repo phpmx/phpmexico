@@ -14,14 +14,16 @@ import {
   Slack,
 } from 'lucide-react'
 
+const urlBase = import.meta.env.BASE_URL;
+
 const HeroSection = () => (
   <section className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-12 text-center md:py-20">
     <div className="container mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
       <div className="mb-8 flex justify-center">
-        <img 
-          src="/logo.png" 
-          srcSet="/logo.png 1x, /logo@2x.png 2x, /logo@3x.png 3x"
-          alt="PHP Mexico Logo" 
+        <img
+          src={`${urlBase}logo.png`}
+          srcSet={`${urlBase}logo.png 1x, ${urlBase}logo@2x.png 2x, ${urlBase}logo@3x.png 3x`}
+          alt="PHP Mexico Logo"
           className="h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56"
           width="224"
           height="224"
@@ -71,22 +73,22 @@ const HeroSection = () => (
 )
 
 const techList = [
-  { name: 'Symfony', logo: '/logos/symfony.svg' },
-  { name: 'Laravel', logo: '/logos/laravel.svg' },
-  { name: 'Yii', logo: '/logos/yii.svg' },
-  { name: 'Slim', logo: '/logos/slim.svg' },
-  { name: 'ExpressJs', logo: '/logos/express.svg' },
-  { name: 'Laminas', logo: '/logos/laminas-wordmark.svg' },
-  { name: 'Sass', logo: '/logos/sass.svg' },
-  { name: 'ReactJs', logo: '/logos/react.svg' },
-  { name: 'AngularJs', logo: '/logos/angular.svg' },
-  { name: 'MySQL', logo: '/logos/mysql.svg' },
-  { name: 'PostgreSQL', logo: '/logos/postgresql.svg' },
-  { name: 'Oracle', logo: '/logos/oracle.svg' },
-  { name: 'SQL Server', logo: '/logos/microsoftsqlserver.svg' },
-  { name: 'Drupal', logo: '/logos/drupal.svg' },
-  { name: 'WordPress', logo: '/logos/wordpress.svg' },
-  { name: 'Magento', logo: '/logos/magento.svg' },
+  { name: 'Symfony', logo: `${urlBase}logos/symfony.svg` },
+  { name: 'Laravel', logo: `${urlBase}logos/laravel.svg` },
+  { name: 'Yii', logo: `${urlBase}logos/yii.svg` },
+  { name: 'Slim', logo: `${urlBase}logos/slim.svg` },
+  { name: 'ExpressJs', logo: `${urlBase}logos/express.svg` },
+  { name: 'Laminas', logo: `${urlBase}logos/laminas-wordmark.svg` },
+  { name: 'Sass', logo: `${urlBase}logos/sass.svg` },
+  { name: 'ReactJs', logo: `${urlBase}logos/react.svg` },
+  { name: 'AngularJs', logo: `${urlBase}logos/angular.svg` },
+  { name: 'MySQL', logo: `${urlBase}logos/mysql.svg` },
+  { name: 'PostgreSQL', logo: `${urlBase}logos/postgresql.svg` },
+  { name: 'Oracle', logo: `${urlBase}logos/oracle.svg` },
+  { name: 'SQL Server', logo: `${urlBase}logos/microsoftsqlserver.svg` },
+  { name: 'Drupal', logo: `${urlBase}logos/drupal.svg` },
+  { name: 'WordPress', logo: `${urlBase}logos/wordpress.svg` },
+  { name: 'Magento', logo: `${urlBase}logos/magento.svg` },
 ]
 
 const TechnologiesSection = () => (
