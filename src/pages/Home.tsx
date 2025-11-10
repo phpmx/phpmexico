@@ -24,7 +24,7 @@ const HeroSection = () => (
           src={`${urlBase}logo.png`}
           srcSet={`${urlBase}logo.png 1x, ${urlBase}logo@2x.png 2x, ${urlBase}logo@3x.png 3x`}
           alt="PHP Mexico Logo"
-          className="h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56"
+          className="h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 object-contain"
           width="224"
           height="224"
         />
