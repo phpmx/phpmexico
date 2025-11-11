@@ -30,6 +30,7 @@ jobs:
         run: |
           echo VITE_YOUTUBE_API_KEY=${{ secrets.VITE_YOUTUBE_API_KEY }} >> .env
           echo VITE_YOUTUBE_CHANNEL_ID=${{ secrets.VITE_YOUTUBE_CHANNEL_ID }} >> .env
+          echo VITE_BASE_PATH=${{ secrets.VITE_BASE_PATH }} >> .env
       
       - name: Build the project
         run: npm run build
