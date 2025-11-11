@@ -1,45 +1,92 @@
 # PHP México
-![php73-badge]
-> PHP México Community website
 
-![](resources/docs/img/phpmexico.mx.png)
+PHP México Community website - The largest PHP community in Mexico.
 
-## Development setup
+## Description
 
-Windows, OS X & Linux::
+This is the official website for PHP México, a community of PHP developers across Mexico. The site provides:
 
-- Run docker container & install dependencies
-```sh
-docker-compose up -d
-docker-compose exec -u web web bash
-composer install
-php bin/console doctrine:migra:migra
+- Community information and resources
+- Event listings and videos from past meetups
+- FAQ section for new members
+- Technology showcase
+- Social media integration
+
+Built with React, TypeScript, Vite, and Tailwind CSS.
+
+## Development Setup
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Sirpyerre/phpmexico.git
+cd phpmexico
 ```
 
-- Build assets
-```sh
-docker-compose -f docker-compose.cli.yml run --rm yarn install
-docker-compose -f docker-compose.cli.yml run --rm yarn build
+2. Install dependencies:
+```bash
+npm install
 ```
 
-- Go to http://localhost:8080/
+3. Create a `.env.local` file in the root directory:
+```bash
+VITE_YOUTUBE_API_KEY=your_youtube_api_key_here
+VITE_YOUTUBE_CHANNEL_ID=UCwQwULU2DdB6BkfBqLpQaKA
+```
+
+4. Start the development server:
+```bash
+npm run dev
+```
+
+5. Open your browser at `http://localhost:5173`
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
 ## Contributing
 
-### Open [issues](https://github.com/phpmx/phpmexico/issues) & [projects](https://github.com/phpmx/phpmexico/projects/)
+We welcome contributions from the community! Here's how you can help:
 
-1. Fork it (<https://github.com/phpmx/phpmexico/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Run php-cs-fixer (`composer lint`)
-4. Run tests (`./bin/phpunit`)
-4. Commit your changes (`git commit -am 'Add some fooBar'`)
-5. Push to the branch (`git push origin feature/fooBar`)
-6. Create a new Pull Request
+### Reporting Issues
 
-## Meta
+- Use the GitHub issue tracker
+- Provide clear description and steps to reproduce
+- Include screenshots if applicable
 
-PHP México – [@phpmx](https://twitter.com/phpmx) – [slack://phpmx](https://phpmx.slack.com)
+### Pull Requests
 
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-<!-- Markdown link & img dfn's -->
-[php73-badge]: https://img.shields.io/badge/PHP_Version-7.3-darkgreen.svg
+### Code Guidelines
+
+- Follow the existing code style
+- Write meaningful commit messages
+- Test your changes before submitting
+- Update documentation as needed
+
+## Community
+
+- **Slack**: [Join our chat](https://join.slack.com/t/phpmx/shared_invite/zt-3a188halw-o05hyFNG~qEmW9Ci_g1kuQ)
+- **Meetup**: [PHP The Right Way](https://www.meetup.com/es-ES/PHP-The-Right-Way/)
+- **Twitter**: [@phpmx](https://twitter.com/phpmx)
+- **YouTube**: [@phpmexico](https://www.youtube.com/@phpmexico)
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
